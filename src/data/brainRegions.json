@@ -1,0 +1,175 @@
+[
+    {
+        "id": "flutter",
+        "side": "right",
+        "title": "Flutter",
+        "description": "Applications mobiles multiplateformes iOS & Android",
+        "color": "#00d4ff",
+        "glowColor": "rgba(0, 212, 255, 0.6)",
+        "connections": [
+            "react-web",
+            "angular",
+            "devops-archi"
+        ],
+        "projectIds": [
+            "smart-vigie",
+            "nice-benevoles",
+            "terra-amata"
+        ],
+        "technologies": [
+            "Flutter",
+            "Dart",
+            "Riverpod",
+            "GetX",
+            "iOS",
+            "Android"
+        ]
+    },
+    {
+        "id": "react-web",
+        "side": "right",
+        "title": "React & Web",
+        "description": "Applications web modernes, SPAs et sites vitrine",
+        "color": "#00d4ff",
+        "glowColor": "rgba(0, 212, 255, 0.6)",
+        "connections": [
+            "flutter",
+            "angular",
+            "creative-uiux"
+        ],
+        "projectIds": [
+            "site-dj"
+        ],
+        "technologies": [
+            "React",
+            "Vite",
+            "JavaScript",
+            "HTML",
+            "CSS",
+            "SEO"
+        ]
+    },
+    {
+        "id": "angular",
+        "side": "right",
+        "title": "Angular",
+        "description": "Backoffices et dashboards en TypeScript",
+        "color": "#4fc3f7",
+        "glowColor": "rgba(79, 195, 247, 0.6)",
+        "connections": [
+            "react-web",
+            "flutter",
+            "backend-api"
+        ],
+        "projectIds": [
+            "backoffice-vigie",
+            "angular-poc"
+        ],
+        "technologies": [
+            "Angular",
+            "TypeScript",
+            "SCSS",
+            "RxJS",
+            "Bootstrap"
+        ]
+    },
+    {
+        "id": "creative-uiux",
+        "side": "right",
+        "title": "Creative & UI/UX",
+        "description": "Design, gaming et expériences interactives",
+        "color": "#7c4dff",
+        "glowColor": "rgba(124, 77, 255, 0.6)",
+        "connections": [
+            "react-web",
+            "angular"
+        ],
+        "projectIds": [
+            "jeu-arene",
+            "site-dj",
+            "mister-servicios"
+        ],
+        "technologies": [
+            "SCSS",
+            "Bootstrap",
+            "LUAU",
+            "Roblox Studio",
+            "Elementor",
+            "WordPress"
+        ]
+    },
+    {
+        "id": "android-mobile",
+        "side": "left",
+        "title": "Android Natif",
+        "description": "Applications Android natives avec Kotlin",
+        "color": "#0055cc",
+        "glowColor": "rgba(0, 85, 204, 0.6)",
+        "connections": [
+            "backend-api",
+            "devops-archi"
+        ],
+        "projectIds": [
+            "smart-chantier",
+            "carte-citoyenne"
+        ],
+        "technologies": [
+            "Android",
+            "Kotlin",
+            "Retrofit",
+            "ViewModel",
+            "Google Play"
+        ]
+    },
+    {
+        "id": "backend-api",
+        "side": "left",
+        "title": "Backend & API",
+        "description": "Serveurs, APIs REST et gestion de données",
+        "color": "#0066ee",
+        "glowColor": "rgba(0, 102, 238, 0.6)",
+        "connections": [
+            "android-mobile",
+            "angular",
+            "devops-archi"
+        ],
+        "projectIds": [
+            "mister-servicios",
+            "angular-poc",
+            "nice-benevoles"
+        ],
+        "technologies": [
+            "Node.js",
+            "PHP",
+            "WordPress",
+            "REST API",
+            "WebSocket",
+            "phpMyAdmin"
+        ]
+    },
+    {
+        "id": "devops-archi",
+        "side": "left",
+        "title": "DevOps & Architecture",
+        "description": "CI/CD, déploiement stores et méthodes Agile",
+        "color": "#1a88ff",
+        "glowColor": "rgba(26, 136, 255, 0.6)",
+        "connections": [
+            "android-mobile",
+            "backend-api",
+            "flutter"
+        ],
+        "projectIds": [
+            "smart-vigie",
+            "smart-chantier"
+        ],
+        "technologies": [
+            "CI/CD",
+            "GitFlow",
+            "Agile/Scrum",
+            "App Store",
+            "Google Play",
+            "Jira"
+        ]
+    }
+]

@@ -1,0 +1,179 @@
+[
+    {
+        "id": "smart-vigie",
+        "title": "Smart Vigie",
+        "description": "Application multiplateforme de signalement pour professionnels. Multilingue (FR/EN/NL), Google Maps avec marqueurs personnalisés, déploiement stores Apple & Android.",
+        "year": "2024 – 2025",
+        "company": "Ubiplace",
+        "regionIds": [
+            "flutter",
+            "devops-archi"
+        ],
+        "technologies": [
+            "Flutter",
+            "Dart",
+            "Google Maps API",
+            "CI/CD",
+            "GitFlow"
+        ],
+        "links": {}
+    },
+    {
+        "id": "smart-chantier",
+        "title": "Smart Chantier",
+        "description": "Application Android de suivi de chantiers. Intégration Retrofit pour API HTTP, amélioration accessibilité (lecture d'écran, résumé vocal), déploiement Google Play.",
+        "year": "2024 – 2025",
+        "company": "Ubiplace",
+        "regionIds": [
+            "android-mobile",
+            "devops-archi"
+        ],
+        "technologies": [
+            "Android",
+            "Kotlin",
+            "Retrofit",
+            "Android Studio",
+            "Gemini"
+        ],
+        "links": {}
+    },
+    {
+        "id": "nice-benevoles",
+        "title": "Nice Métropole Bénévoles",
+        "description": "Application Flutter pour les bénévoles des événements de Nice. Riverpod, Google Maps, liste dynamique des missions, LiveChat temps réel via WebSockets.",
+        "year": "2022 – 2023",
+        "company": "Métropole Nice Côte d'Azur",
+        "regionIds": [
+            "flutter",
+            "backend-api"
+        ],
+        "technologies": [
+            "Flutter",
+            "Dart",
+            "Riverpod",
+            "Google Maps API",
+            "WebSocket"
+        ],
+        "links": {}
+    },
+    {
+        "id": "terra-amata",
+        "title": "Terra Amata",
+        "description": "Refonte complète de l'app du Musée de Préhistoire de Nice. Ionic → Flutter, backoffice Directus CMS, publication iOS & Android.",
+        "year": "2022 – 2023",
+        "company": "Métropole Nice Côte d'Azur",
+        "regionIds": [
+            "flutter",
+            "angular"
+        ],
+        "technologies": [
+            "Flutter",
+            "Dart",
+            "GetX",
+            "Directus CMS",
+            "PHP"
+        ],
+        "links": {
+            "android": "https://play.google.com/store/apps/details?id=org.nicecotedazur.terraamata",
+            "ios": "https://apps.apple.com/ga/app/terra-amata/id1464514880"
+        }
+    },
+    {
+        "id": "carte-citoyenne",
+        "title": "Carte Citoyenne",
+        "description": "Application Android de carte virtuelle pour accéder aux espaces culturels de Nice. Navigation NavHost, Google Maps, ViewModel.",
+        "year": "2021",
+        "company": "Métropole Nice Côte d'Azur",
+        "regionIds": [
+            "android-mobile"
+        ],
+        "technologies": [
+            "Android",
+            "Kotlin",
+            "Retrofit 2",
+            "Google Maps API",
+            "ViewModel"
+        ],
+        "links": {}
+    },
+    {
+        "id": "angular-poc",
+        "title": "Angular Proof of Concept",
+        "description": "POC dashboard Angular pour changement de techno backoffice. Login utilisateur, tableau de notifications temps réel depuis serveur Node.js, PgAdmin.",
+        "year": "2021",
+        "company": "Métropole Nice Côte d'Azur",
+        "regionIds": [
+            "angular",
+            "backend-api"
+        ],
+        "technologies": [
+            "Angular",
+            "TypeScript",
+            "Node.js",
+            "HTTP GET",
+            "PgAdmin"
+        ],
+        "links": {}
+    },
+    {
+        "id": "jeu-arene",
+        "title": "Jeu d'Arène Compétitif (BETA)",
+        "description": "Jeu d'arène compétitif développé sur Roblox Studio en LUAU. Arène complète, HUD, scripts serveur (CombatService, DataStore), armes aléatoires, ambiance sonore.",
+        "year": "2026",
+        "company": "Projet Personnel",
+        "regionIds": [
+            "creative-uiux"
+        ],
+        "technologies": [
+            "LUAU",
+            "Roblox Studio",
+            "Scripting serveur/client",
+            "UI/UX gaming"
+        ],
+        "links": {}
+    },
+    {
+        "id": "site-dj",
+        "title": "Site Vitrine DJ",
+        "description": "Site vitrine professionnel pour un DJ. React + Vite, intégration plateformes musicales (Spotify, YouTube, Beatport, SoundCloud), SEO, déploiement GitHub Pages.",
+        "year": "2026",
+        "company": "Projet Personnel",
+        "regionIds": [
+            "react-web",
+            "creative-uiux"
+        ],
+        "technologies": [
+            "React",
+            "Vite",
+            "HTML",
+            "CSS",
+            "SEO",
+            "GitHub Pages"
+        ],
+        "links": {
+            "live": "https://diazmantes.fr"
+        }
+    },
+    {
+        "id": "mister-servicios",
+        "title": "Mister Servicios",
+        "description": "Plateforme de mise en relation de services au Mexique (type Allo Voisin). Messagerie, notation, paiement en ligne, multilingue WPML, profils clients/prestataires.",
+        "year": "2025 – 2026",
+        "company": "Projet Personnel",
+        "regionIds": [
+            "backend-api",
+            "creative-uiux"
+        ],
+        "technologies": [
+            "PHP",
+            "WordPress",
+            "Elementor",
+            "WPML",
+            "phpMyAdmin",
+            "HTML/CSS"
+        ],
+        "links": {
+            "live": "https://mister-servicios.com"
+        }
+    }
+]

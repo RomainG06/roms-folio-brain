@@ -1,0 +1,27 @@
+.tooltip {
+    position: fixed;
+    pointer-events: none;
+    background: rgba(7, 7, 15, 0.88);
+    border: 1px solid rgba(0, 212, 255, 0.2);
+    backdrop-filter: blur(8px);
+    border-radius: 6px;
+    padding: 6px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    z-index: 50;
+}
+
+.title {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: var(--white);
+    letter-spacing: 0.03em;
+}
+
+.count {
+    font-size: 0.65rem;
+    color: var(--cyan);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
