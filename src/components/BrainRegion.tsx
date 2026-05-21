@@ -9,19 +9,16 @@ export interface RegionPosition {
     position: [number, number, number]
 }
 
-// Coordonnées 3D sur la surface du cerveau
-// (brain scalé à ≈4.4 unités de large, centré à l'origine)
-// ⚠️ À ajuster visuellement une fois le modèle chargé
 export const REGION_POSITIONS_3D: RegionPosition[] = [
     // ── Hémisphère gauche (LOGIC) ──────────────────
-    { id: 'android-mobile', position: [-1.6, -0.5, 0.8] }, // temporal bas-gauche
-    { id: 'backend-api', position: [-1.3, 0.8, 1.3] }, // frontal gauche
-    { id: 'devops-archi', position: [-1.7, 0.9, -0.2] }, // pariétal gauche
+    { id: 'android-mobile', position: [1, 1, 0.8] },
+    { id: 'backend-api', position: [-0.8, 1.5, 0.2] },
+    { id: 'devops-archi', position: [-1.2, 0.4, 0.8] },
     // ── Hémisphère droit (CREATIVE) ────────────────
-    { id: 'flutter', position: [1.5, 0.3, 1.3] }, // temporal droit
-    { id: 'react-web', position: [1.6, -0.2, -1.2] }, // occipital droit
-    { id: 'angular', position: [1.2, 0.8, 1.4] }, // frontal droit
-    { id: 'creative-uiux', position: [1.8, 0.9, 0.1] }, // pariétal droit
+    { id: 'flutter', position: [-1, 0.5, -1.3] },
+    { id: 'react-web', position: [1.6, -0.2, -1.2] },
+    { id: 'angular', position: [1.2, 1.2, -0.5] },
+    { id: 'creative-uiux', position: [0.2, 0.8, -0.5] },
 ]
 
 // Connexions entre régions (paires id-id)
