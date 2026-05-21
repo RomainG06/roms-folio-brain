@@ -1,6 +1,8 @@
-import { useState, useCallback, useRef } from 'react'
-import { motion } from 'framer-motion'
-import { BrainRegionShape, REGION_PATHS, BASE_CONNECTIONS } from './BrainRegion'
+import { useState, useCallback, Suspense } from 'react'
+import { Canvas } from '@react-three/fiber'
+import { OrbitControls } from '@react-three/drei'
+import { BrainModel } from './BrainModel'
+import { BrainRegionPoint, REGION_POSITIONS_3D, BASE_CONNECTIONS } from './BrainRegion'
 import NeuralConnection from './NeuralConnection'
 import RegionTooltip from './RegionTooltip'
 import type { BrainRegion } from '../types'
@@ -16,13 +18,12 @@ interface BrainSceneProps {
     onActivate: (id: string) => void
 }
 
-// Couleur de connexion selon les régions impliquées
 function getConnectionColor(fromId: string, toId: string, regions: BrainRegion[]): string {
     const from = regions.find(r => r.id === fromId)
     const to = regions.find(r => r.id === toId)
     if (from?.side === 'right' && to?.side === 'right') return '#00d4ff'
     if (from?.side === 'left' && to?.side === 'left') return '#1a88ff'
-    return '#4fc3f7' // pont gauche ↔ droit
+    return '#4fc3f7'
 }
 
 export default function BrainScene({
@@ -35,102 +36,78 @@ export default function BrainScene({
     onActivate,
 }: BrainSceneProps) {
     const [mouse, setMouse] = useState({ x: 0, y: 0 })
-    const svgRef = useRef<SVGSVGElement>(null)
     const hoveredRegion = hoveredId ? regions.find(r => r.id === hoveredId) ?? null : null
+
+    const activeConnSet = new Set(
+        activeConnections.map(([a, b]) => [a, b].sort().join('|'))
+    )
 
     const handleMouseMove = useCallback((e: React.MouseEvent) => {
         setMouse({ x: e.clientX, y: e.clientY })
     }, [])
 
-    // Connexions à rendre : base discrètes + actives
-    const allConnectionPairs = BASE_CONNECTIONS
-    const activeConnSet = new Set(
-        activeConnections.map(([a, b]) => [a, b].sort().join('|'))
-    )
-
     return (
-        <div className={styles.wrapper} onMouseMove={handleMouseMove}>
-            <motion.svg
-                ref={svgRef}
-                viewBox="0 0 600 430"
-                className={styles.svg}
-                initial={{ opacity: 0, scale: 0.92 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 1.2, ease: 'easeOut', delay: 0.2 }}
-                aria-label="Carte des compétences — cerveau interactif"
-                role="img"
+        <div
+            className={`${styles.wrapper} ${hoveredId ? styles.cursorPointer : ''}`}
+            onMouseMove={handleMouseMove}
+        >
+            <Canvas
+                camera={{ position: [0, 1.5, 6], fov: 50 }}
+                gl={{ alpha: true, antialias: true }}
+                className={styles.canvas}
             >
-                {/* Séparateur central discret */}
-                <line
-                    x1="300" y1="40" x2="300" y2="390"
-                    stroke="rgba(255,255,255,0.04)"
-                    strokeWidth={1}
-                    strokeDasharray="4 8"
-                />
+                {/* Éclairage ambiant + directionnel */}
+                <ambientLight intensity={0.25} />
+                <pointLight position={[4, 6, 4]} intensity={1.5} color="#ffffff" />
+                <pointLight position={[-4, -2, -4]} intensity={0.6} color="#0040ff" />
 
-                {/* Labels hémisphères */}
-                <text x="150" y="28" textAnchor="middle" fill="rgba(255,255,255,0.18)" fontSize="10" letterSpacing="3" fontFamily="Space Grotesk">LOGIC</text>
-                <text x="450" y="28" textAnchor="middle" fill="rgba(255,255,255,0.18)" fontSize="10" letterSpacing="3" fontFamily="Space Grotesk">CREATIVE</text>
+                <Suspense fallback={null}>
+                    {/* Cerveau 3D */}
+                    <BrainModel />
 
-                {/* Connexions neuronales */}
-                {allConnectionPairs.map(([a, b], i) => {
-                    const key = [a, b].sort().join('|')
-                    const isActive = activeConnSet.has(key)
-                    return (
-                        <NeuralConnection
-                            key={key}
-                            fromId={a}
-                            toId={b}
-                            active={isActive}
-                            color={getConnectionColor(a, b, regions)}
-                            index={i}
-                        />
-                    )
-                })}
+                    {/* Connexions neuronales */}
+                    {BASE_CONNECTIONS.map(([a, b], i) => {
+                        const key = [a, b].sort().join('|')
+                        const isActive = activeConnSet.has(key)
+                        return (
+                            <NeuralConnection
+                                key={key}
+                                fromId={a}
+                                toId={b}
+                                active={isActive}
+                                color={getConnectionColor(a, b, regions)}
+                                index={i}
+                            />
+                        )
+                    })}
 
-                {/* Régions */}
-                {REGION_PATHS.map((path, i) => {
-                    const region = regions.find(r => r.id === path.id)
-                    if (!region) return null
-                    return (
-                        <motion.g
-                            key={region.id}
-                            initial={{ opacity: 0 }}
-                            animate={{ opacity: 1 }}
-                            transition={{ delay: 0.3 + i * 0.1, duration: 0.6 }}
-                        >
-                            <BrainRegionShape
+                    {/* Points de régions interactifs */}
+                    {REGION_POSITIONS_3D.map((rp) => {
+                        const region = regions.find(r => r.id === rp.id)
+                        if (!region) return null
+                        return (
+                            <BrainRegionPoint
+                                key={region.id}
                                 region={region}
-                                path={path}
+                                position={rp.position}
                                 isHovered={hoveredId === region.id}
                                 isActive={activeId === region.id}
                                 isLit={litRegionIds.has(region.id) && activeId !== region.id}
                                 onHover={onHover}
                                 onActivate={onActivate}
                             />
-                            {/* Label de la région */}
-                            <motion.text
-                                x={path.labelX}
-                                y={path.labelY + 3}
-                                textAnchor="middle"
-                                fontSize="9"
-                                fontFamily="Space Grotesk"
-                                fontWeight="500"
-                                letterSpacing="1.5"
-                                fill={region.color}
-                                fillOpacity={activeId === region.id ? 1 : hoveredId === region.id ? 0.9 : 0.45}
-                                style={{ pointerEvents: 'none', textTransform: 'uppercase' }}
-                                animate={{
-                                    fillOpacity: activeId === region.id ? 1 : hoveredId === region.id ? 0.9 : 0.45,
-                                }}
-                                transition={{ duration: 0.2 }}
-                            >
-                                {region.title}
-                            </motion.text>
-                        </motion.g>
-                    )
-                })}
-            </motion.svg>
+                        )
+                    })}
+                </Suspense>
+
+                <OrbitControls
+                    enablePan={false}
+                    minDistance={3}
+                    maxDistance={10}
+                    minPolarAngle={Math.PI / 6}
+                    maxPolarAngle={(Math.PI * 2) / 3}
+                />
+            </Canvas>
 
             <RegionTooltip
                 region={hoveredRegion}
