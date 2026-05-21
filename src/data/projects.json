@@ -117,18 +117,22 @@
     },
     {
         "id": "jeu-arene",
-        "title": "Jeu d'Arène Compétitif (BETA)",
-        "description": "Jeu d'arène compétitif développé sur Roblox Studio en LUAU. Arène complète, HUD, scripts serveur (CombatService, DataStore), armes aléatoires, ambiance sonore.",
+        "title": "Jeu d'Arène Compétitif",
+        "description": "Jeu d'arène multijoueur sur Roblox Studio (PC & Mobile, 4-8 joueurs). Machine à états complète (Attente→Intermission→En jeu→Fin de round), 10 armes avec raycasts serveur, 2 transformations débloquables (Icare, DemonForm), progression persistante DataStore, anti-cheat position, 16 services serveur modulaires, 30 RemoteEvents, interface tactile mobile dédiée.",
         "year": "2026",
         "company": "Projet Personnel",
         "regionIds": [
+            "video-games",
             "creative-uiux"
         ],
         "technologies": [
             "LUAU",
             "Roblox Studio",
-            "Scripting serveur/client",
-            "UI/UX gaming"
+            "DataStore",
+            "RemoteEvents",
+            "Anti-cheat",
+            "GamePass API",
+            "Mobile Combat UI"
         ],
         "links": {}
     },

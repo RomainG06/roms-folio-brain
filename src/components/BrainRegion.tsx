@@ -19,6 +19,7 @@ export const REGION_POSITIONS_3D: RegionPosition[] = [
     { id: 'react-web', position: [1.6, -0.2, -1.2] },
     { id: 'angular', position: [1.2, 1.2, -0.5] },
     { id: 'creative-uiux', position: [0.2, 0.8, -0.5] },
+    { id: 'video-games', position: [0.8, -0.5, -1.5] },
 ]
 
 // Connexions entre régions (paires id-id)
@@ -33,6 +34,8 @@ export const BASE_CONNECTIONS: Array<[string, string]> = [
     // Pont gauche ↔ droit
     ['devops-archi', 'flutter'],
     ['backend-api', 'angular'],
+    ['video-games', 'creative-uiux'],
+    ['video-games', 'backend-api'],
 ]
 
 // Centre 3D d'une région (utilisé par NeuralConnection)

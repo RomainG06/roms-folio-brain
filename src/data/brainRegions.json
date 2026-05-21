@@ -82,7 +82,8 @@
         "glowColor": "rgba(124, 77, 255, 0.6)",
         "connections": [
             "react-web",
-            "angular"
+            "angular",
+            "video-games"
         ],
         "projectIds": [
             "jeu-arene",
@@ -92,8 +93,6 @@
         "technologies": [
             "SCSS",
             "Bootstrap",
-            "LUAU",
-            "Roblox Studio",
             "Elementor",
             "WordPress"
         ]
@@ -131,7 +130,8 @@
         "connections": [
             "android-mobile",
             "angular",
-            "devops-archi"
+            "devops-archi",
+            "video-games"
         ],
         "projectIds": [
             "mister-servicios",
@@ -157,7 +157,8 @@
         "connections": [
             "android-mobile",
             "backend-api",
-            "flutter"
+            "flutter",
+            "video-games"
         ],
         "projectIds": [
             "smart-vigie",
@@ -170,6 +171,30 @@
             "App Store",
             "Google Play",
             "Jira"
+        ]
+    },
+    {
+        "id": "video-games",
+        "side": "right",
+        "title": "Gaming",
+        "description": "Jeux vidéo, scripting serveur et expériences interactives",
+        "color": "#00ff88",
+        "glowColor": "rgba(0, 255, 136, 0.6)",
+        "connections": [
+            "creative-uiux",
+            "backend-api",
+            "devops-archi"
+        ],
+        "projectIds": [
+            "jeu-arene"
+        ],
+        "technologies": [
+            "LUAU",
+            "Roblox Studio",
+            "DataStore",
+            "RemoteEvents",
+            "Anti-cheat",
+            "GamePass API"
         ]
     }
 ]
