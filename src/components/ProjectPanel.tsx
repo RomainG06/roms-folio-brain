@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import type { BrainRegion, Project } from '../types'
 import styles from './ProjectPanel.module.css'
@@ -16,112 +17,252 @@ function ExternalIcon() {
     )
 }
 
-export default function ProjectPanel({ region, projects, onClose }: ProjectPanelProps) {
+// ── Modal détail projet ──────────────────────────────────────────────────────
+function ProjectModal({ project, region, onClose }: {
+    project: Project | null
+    region: BrainRegion | null
+    onClose: () => void
+}) {
+    const color = region?.color ?? '#00d4ff'
+
+    useEffect(() => {
+        const handler = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }
+        if (project) window.addEventListener('keydown', handler)
+        return () => window.removeEventListener('keydown', handler)
+    }, [project, onClose])
+
     return (
         <AnimatePresence>
-            {region && (
+            {project && (
                 <>
-                    {/* Backdrop */}
+                    {/* Backdrop flouté */}
                     <motion.div
-                        className={styles.backdrop}
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        exit={{ opacity: 0 }}
+                        className={styles.modalBackdrop}
+                        initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+                        transition={{ duration: 0.2 }}
                         onClick={onClose}
                     />
 
-                    {/* Panel */}
-                    <motion.aside
-                        className={styles.panel}
-                        initial={{ x: '100%', opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        exit={{ x: '100%', opacity: 0 }}
-                        transition={{ type: 'spring', damping: 28, stiffness: 280 }}
-                        aria-label={`Projets — ${region.title}`}
-                    >
-                        {/* Header */}
-                        <div className={styles.header}>
-                            <div className={styles.headerLeft}>
-                                <span className={styles.regionDot} style={{ background: region.color }} />
-                                <div>
-                                    <h2 className={styles.regionTitle}>{region.title}</h2>
-                                    <p className={styles.regionDesc}>{region.description}</p>
-                                </div>
-                            </div>
-                            <button className={styles.closeBtn} onClick={onClose} aria-label="Fermer">
+                    {/* Overlay centrant (non interactif) */}
+                    <div className={styles.modalOverlay}>
+                        <motion.div
+                            className={styles.modal}
+                            role="dialog" aria-modal="true" aria-label={`Détail — ${project.title}`}
+                            initial={{ opacity: 0, scale: 0.94, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            exit={{ opacity: 0, scale: 0.94, y: 20 }}
+                            transition={{ type: 'spring', damping: 26, stiffness: 300 }}
+                        >
+                            {/* Barre accent couleur région */}
+                            <div
+                                className={styles.modalAccentBar}
+                                style={{ background: `linear-gradient(90deg, ${color}, ${color}55 60%, transparent)` }}
+                            />
+
+                            {/* Fermer */}
+                            <button className={styles.modalCloseBtn} onClick={onClose} aria-label="Fermer">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                                 </svg>
                             </button>
-                        </div>
 
-                        {/* Technologies */}
-                        <div className={styles.techList}>
-                            {region.technologies.map(t => (
-                                <span key={t} className={styles.tech} style={{ borderColor: region.color + '40', color: region.color }}>
-                                    {t}
-                                </span>
-                            ))}
-                        </div>
+                            <div className={styles.modalBody}>
+                                {/* ── Colonne gauche ── */}
+                                <div className={styles.modalLeft}>
+                                    <div className={styles.modalMetaRow}>
+                                        <span className={styles.modalCompany} style={{ color }}>{project.company}</span>
+                                        <span className={styles.modalSep}>·</span>
+                                        <span className={styles.modalYear}>{project.year}</span>
+                                    </div>
+                                    <h2 className={styles.modalTitle}>{project.title}</h2>
+                                    <p className={styles.modalDesc}>{project.description}</p>
 
-                        {/* Projets */}
-                        <div className={styles.projects}>
-                            <p className={styles.sectionLabel}>
-                                {projects.length} projet{projects.length > 1 ? 's' : ''}
-                            </p>
-                            {projects.map((project, i) => (
-                                <motion.div
-                                    key={project.id}
-                                    className={styles.projectCard}
-                                    initial={{ opacity: 0, y: 12 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{ delay: 0.08 + i * 0.06 }}
-                                    style={{ borderColor: region.color + '25' }}
-                                >
-                                    <div className={styles.projectMeta}>
-                                        <span className={styles.projectYear}>{project.year}</span>
-                                        <span className={styles.projectCompany}>{project.company}</span>
-                                    </div>
-                                    <h3 className={styles.projectTitle}>{project.title}</h3>
-                                    <p className={styles.projectDesc}>{project.description}</p>
-                                    <div className={styles.projectTechs}>
-                                        {project.technologies.slice(0, 4).map(t => (
-                                            <span key={t} className={styles.projectTech}>{t}</span>
-                                        ))}
-                                        {project.technologies.length > 4 && (
-                                            <span className={styles.projectTech}>+{project.technologies.length - 4}</span>
-                                        )}
-                                    </div>
                                     {Object.keys(project.links).length > 0 && (
-                                        <div className={styles.projectLinks}>
+                                        <div className={styles.modalLinks}>
                                             {project.links.live && (
-                                                <a href={project.links.live} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                <a href={project.links.live} target="_blank" rel="noopener noreferrer" className={styles.modalLinkBtn} style={{ '--accent': color } as React.CSSProperties}>
                                                     Live <ExternalIcon />
                                                 </a>
                                             )}
                                             {project.links.android && (
-                                                <a href={project.links.android} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                <a href={project.links.android} target="_blank" rel="noopener noreferrer" className={styles.modalLinkBtn} style={{ '--accent': color } as React.CSSProperties}>
                                                     Android <ExternalIcon />
                                                 </a>
                                             )}
                                             {project.links.ios && (
-                                                <a href={project.links.ios} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                <a href={project.links.ios} target="_blank" rel="noopener noreferrer" className={styles.modalLinkBtn} style={{ '--accent': color } as React.CSSProperties}>
                                                     iOS <ExternalIcon />
                                                 </a>
                                             )}
                                             {project.links.github && (
-                                                <a href={project.links.github} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                <a href={project.links.github} target="_blank" rel="noopener noreferrer" className={styles.modalLinkBtn} style={{ '--accent': color } as React.CSSProperties}>
                                                     GitHub <ExternalIcon />
                                                 </a>
                                             )}
                                         </div>
                                     )}
-                                </motion.div>
-                            ))}
-                        </div>
-                    </motion.aside>
+                                </div>
+
+                                {/* ── Colonne droite ── */}
+                                <div className={styles.modalRight}>
+                                    {region && (
+                                        <div className={styles.modalRegionTag}>
+                                            <span
+                                                className={styles.modalRegionDot}
+                                                style={{ background: color, boxShadow: `0 0 6px ${color}` }}
+                                            />
+                                            <span>{region.title}</span>
+                                        </div>
+                                    )}
+                                    <p className={styles.modalSectionLabel}>Stack technique</p>
+                                    <div className={styles.modalTechGrid}>
+                                        {project.technologies.map((t, i) => (
+                                            <motion.span
+                                                key={t}
+                                                className={styles.modalTech}
+                                                style={{ '--accent': color } as React.CSSProperties}
+                                                initial={{ opacity: 0, scale: 0.85 }}
+                                                animate={{ opacity: 1, scale: 1 }}
+                                                transition={{ delay: 0.08 + i * 0.04 }}
+                                            >
+                                                {t}
+                                            </motion.span>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </>
             )}
         </AnimatePresence>
+    )
+}
+
+// ── Panel principal ──────────────────────────────────────────────────────────
+export default function ProjectPanel({ region, projects, onClose }: ProjectPanelProps) {
+    const [selectedProject, setSelectedProject] = useState<Project | null>(null)
+
+    // Reset modal si le panel se ferme
+    useEffect(() => {
+        if (!region) setSelectedProject(null)
+    }, [region])
+    return (
+        <>
+            <AnimatePresence>
+                {region && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            className={styles.backdrop}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={onClose}
+                        />
+
+                        {/* Panel */}
+                        <motion.aside
+                            className={styles.panel}
+                            initial={{ x: '100%', opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: '100%', opacity: 0 }}
+                            transition={{ type: 'spring', damping: 28, stiffness: 280 }}
+                            aria-label={`Projets — ${region.title}`}
+                        >
+                            {/* Header */}
+                            <div className={styles.header}>
+                                <div className={styles.headerLeft}>
+                                    <span className={styles.regionDot} style={{ background: region.color }} />
+                                    <div>
+                                        <h2 className={styles.regionTitle}>{region.title}</h2>
+                                        <p className={styles.regionDesc}>{region.description}</p>
+                                    </div>
+                                </div>
+                                <button className={styles.closeBtn} onClick={onClose} aria-label="Fermer">
+                                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                                        <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                                    </svg>
+                                </button>
+                            </div>
+
+                            {/* Technologies */}
+                            <div className={styles.techList}>
+                                {region.technologies.map(t => (
+                                    <span key={t} className={styles.tech} style={{ borderColor: region.color + '40', color: region.color }}>
+                                        {t}
+                                    </span>
+                                ))}
+                            </div>
+
+                            {/* Projets */}
+                            <div className={styles.projects}>
+                                <p className={styles.sectionLabel}>
+                                    {projects.length} projet{projects.length > 1 ? 's' : ''}
+                                </p>
+                                {projects.map((project, i) => (
+                                    <motion.div
+                                        key={project.id}
+                                        className={styles.projectCard}
+                                        initial={{ opacity: 0, y: 12 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ delay: 0.08 + i * 0.06 }}
+                                        style={{ borderColor: region.color + '25', cursor: 'pointer' }}
+                                        onClick={() => setSelectedProject(project)}
+                                        title="Voir les détails"
+                                    >
+                                        <div className={styles.projectMeta}>
+                                            <span className={styles.projectYear}>{project.year}</span>
+                                            <span className={styles.projectCompany}>{project.company}</span>
+                                        </div>
+                                        <h3 className={styles.projectTitle}>{project.title}</h3>
+                                        <p className={styles.projectDesc}>{project.description}</p>
+                                        <div className={styles.projectTechs}>
+                                            {project.technologies.slice(0, 4).map(t => (
+                                                <span key={t} className={styles.projectTech}>{t}</span>
+                                            ))}
+                                            {project.technologies.length > 4 && (
+                                                <span className={styles.projectTech}>+{project.technologies.length - 4}</span>
+                                            )}
+                                        </div>
+                                        {Object.keys(project.links).length > 0 && (
+                                            <div className={styles.projectLinks} onClick={e => e.stopPropagation()}>
+                                                {project.links.live && (
+                                                    <a href={project.links.live} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                        Live <ExternalIcon />
+                                                    </a>
+                                                )}
+                                                {project.links.android && (
+                                                    <a href={project.links.android} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                        Android <ExternalIcon />
+                                                    </a>
+                                                )}
+                                                {project.links.ios && (
+                                                    <a href={project.links.ios} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                        iOS <ExternalIcon />
+                                                    </a>
+                                                )}
+                                                {project.links.github && (
+                                                    <a href={project.links.github} target="_blank" rel="noopener noreferrer" className={styles.link}>
+                                                        GitHub <ExternalIcon />
+                                                    </a>
+                                                )}
+                                            </div>
+                                        )}
+                                        <p className={styles.projectHint}>Cliquer pour les détails →</p>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.aside>
+                    </>
+                )}
+            </AnimatePresence>
+
+            <ProjectModal
+                project={selectedProject}
+                region={region}
+                onClose={() => setSelectedProject(null)}
+            />
+        </>
     )
 }

@@ -12,15 +12,28 @@
 }
 
 .name {
-  font-size: 0.88rem;
+  font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.04em;
   color: var(--white);
+  text-transform: uppercase;
 }
 
 .role {
-  font-size: 0.72rem;
+  font-size: 1.5rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--grey);
+}
+
+@media (max-width: 800px) {
+
+  /*   .nav {
+    padding: 1rem;
+  }
+ */
+  .name,
+  .role {
+    font-size: 0.875rem;
+  }
 }
