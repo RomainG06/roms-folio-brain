@@ -71,7 +71,7 @@ export default function ContactBar() {
             <div className={styles.divider} />
 
             <a
-                href="/cv-romain-girard.pdf"
+                href="/romain_cv_brain.pdf"
                 download
                 className={styles.cvBtn}
                 aria-label="Télécharger le CV de Romain Girard"

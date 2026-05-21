@@ -4,11 +4,11 @@ import * as THREE from 'three'
 
 // Matériaux partagés (créés une fois, réutilisés)
 const baseMat = new THREE.MeshStandardMaterial({
-    color: '#060e1f',
-    emissive: '#001530',
-    emissiveIntensity: 0.6,
+    color: '#b61ca1',
+    emissive: '#060e1f',
+    emissiveIntensity: 0.4,
     transparent: true,
-    opacity: 0.45,
+    opacity: 0.60,
     depthWrite: false,
     side: THREE.FrontSide,
 })

@@ -62,9 +62,13 @@ export function BrainRegionPoint({
 }: BrainRegionPointProps) {
     const coreRef = useRef<THREE.Mesh>(null)
     const glowRef = useRef<THREE.Mesh>(null)
+    const coreMatRef = useRef<THREE.MeshBasicMaterial>(null)
+    const glowMatRef = useRef<THREE.MeshBasicMaterial>(null)
+    const lightRef = useRef<THREE.PointLight>(null)
+    const labelRef = useRef<HTMLSpanElement>(null)
     const targetScale = isActive ? 1.5 : isHovered ? 1.25 : 1.0
 
-    useFrame((_, delta) => {
+    useFrame((state, delta) => {
         if (!coreRef.current || !glowRef.current) return
 
         // Interpolation smooth de la scale
@@ -72,12 +76,27 @@ export function BrainRegionPoint({
         const next = THREE.MathUtils.lerp(cur, targetScale, Math.min(delta * 8, 1))
         coreRef.current.scale.setScalar(next)
 
-        // Pulsation idle sur le halo quand inactif
         if (!isActive && !isHovered) {
-            const t = Date.now() * 0.002
-            glowRef.current.scale.setScalar(1 + Math.sin(t) * 0.15)
+            const t = state.clock.elapsedTime
+
+            // Pulsation idle sur le halo
+            glowRef.current.scale.setScalar(1 + Math.sin(t * 2) * 0.15)
+
+            // Blink organique unifié : deux sinus à fréquences incommensurables
+            const blink = 0.5 + 0.5 * (Math.sin(t * 1.3) * Math.sin(t * 0.7))
+
+            if (coreMatRef.current)
+                coreMatRef.current.opacity = THREE.MathUtils.lerp(0.1, isLit ? 0.65 : 0.38, blink)
+            if (glowMatRef.current)
+                glowMatRef.current.opacity = THREE.MathUtils.lerp(0.02, 0.2, blink)
+            if (lightRef.current)
+                lightRef.current.intensity = THREE.MathUtils.lerp(0.1, isLit ? 1.5 : 0.8, blink)
+            if (labelRef.current)
+                labelRef.current.style.opacity = String(THREE.MathUtils.lerp(0.15, 0.85, blink))
         } else {
             glowRef.current.scale.setScalar(1)
+            if (labelRef.current)
+                labelRef.current.style.opacity = isActive ? '1' : '0.9'
         }
     })
 
@@ -89,6 +108,7 @@ export function BrainRegionPoint({
             <mesh ref={glowRef}>
                 <sphereGeometry args={[0.15, 16, 16]} />
                 <meshBasicMaterial
+                    ref={glowMatRef}
                     color={region.color}
                     transparent
                     opacity={isActive ? 0.2 : isHovered ? 0.13 : 0.04}
@@ -105,6 +125,7 @@ export function BrainRegionPoint({
             >
                 <sphereGeometry args={[0.07, 20, 20]} />
                 <meshBasicMaterial
+                    ref={coreMatRef}
                     color={region.color}
                     transparent
                     opacity={isActive ? 1 : isHovered ? 0.9 : isLit ? 0.65 : 0.35}
@@ -113,6 +134,7 @@ export function BrainRegionPoint({
 
             {/* Lumière locale sur le cerveau */}
             <pointLight
+                ref={lightRef}
                 color={region.color}
                 intensity={lightIntensity}
                 distance={2.0}
@@ -122,6 +144,7 @@ export function BrainRegionPoint({
             {/* Label HTML projeté en screen-space */}
             <Html position={[0, 0.24, 0]} center style={{ pointerEvents: 'none' }}>
                 <span
+                    ref={labelRef}
                     style={{
                         color: region.color,
                         fontSize: '9px',
@@ -132,7 +155,6 @@ export function BrainRegionPoint({
                         whiteSpace: 'nowrap',
                         userSelect: 'none',
                         textShadow: `0 0 6px ${region.color}80`,
-                        transition: 'opacity 0.2s',
                     }}
                 >
                     {region.title}
