@@ -73,9 +73,31 @@ function ProjectModal({ project, region, onClose }: {
                                         <span className={styles.modalCompany} style={{ color }}>{project.company}</span>
                                         <span className={styles.modalSep}>·</span>
                                         <span className={styles.modalYear}>{project.year}</span>
+                                        {project.status && (
+                                            <span className={`${styles.statusBadge} ${styles[`status_${project.status}`]}`}>
+                                                {project.status === 'completed' ? 'Terminé' : project.status === 'in-progress' ? 'En cours' : 'POC'}
+                                            </span>
+                                        )}
                                     </div>
                                     <h2 className={styles.modalTitle}>{project.title}</h2>
                                     <p className={styles.modalDesc}>{project.description}</p>
+
+                                    {project.highlights && project.highlights.length > 0 && (
+                                        <ul className={styles.highlightsList}>
+                                            {project.highlights.map((h, i) => (
+                                                <motion.li
+                                                    key={i}
+                                                    className={styles.highlightsItem}
+                                                    style={{ '--accent': color } as React.CSSProperties}
+                                                    initial={{ opacity: 0, x: -8 }}
+                                                    animate={{ opacity: 1, x: 0 }}
+                                                    transition={{ delay: 0.1 + i * 0.05 }}
+                                                >
+                                                    {h}
+                                                </motion.li>
+                                            ))}
+                                        </ul>
+                                    )}
 
                                     {Object.keys(project.links).length > 0 && (
                                         <div className={styles.modalLinks}>
@@ -214,6 +236,11 @@ export default function ProjectPanel({ region, projects, onClose }: ProjectPanel
                                         <div className={styles.projectMeta}>
                                             <span className={styles.projectYear}>{project.year}</span>
                                             <span className={styles.projectCompany}>{project.company}</span>
+                                            {project.status && (
+                                                <span className={`${styles.statusBadge} ${styles[`status_${project.status}`]}`}>
+                                                    {project.status === 'completed' ? 'Terminé' : project.status === 'in-progress' ? 'En cours' : 'POC'}
+                                                </span>
+                                            )}
                                         </div>
                                         <h3 className={styles.projectTitle}>{project.title}</h3>
                                         <p className={styles.projectDesc}>{project.description}</p>

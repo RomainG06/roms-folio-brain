@@ -18,6 +18,8 @@ export interface Project {
   company: string
   regionIds: string[]
   technologies: string[]
+  status?: 'completed' | 'in-progress' | 'poc'
+  highlights?: string[]
   links: {
     live?: string
     android?: string

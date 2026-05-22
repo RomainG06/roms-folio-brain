@@ -38,7 +38,8 @@
             "creative-uiux"
         ],
         "projectIds": [
-            "site-dj"
+            "site-dj",
+            "brain-folio"
         ],
         "technologies": [
             "React",
@@ -63,7 +64,8 @@
         ],
         "projectIds": [
             "backoffice-vigie",
-            "angular-poc"
+            "angular-poc",
+            "viral-maker"
         ],
         "technologies": [
             "Angular",
@@ -88,7 +90,8 @@
         "projectIds": [
             "jeu-arene",
             "site-dj",
-            "mister-servicios"
+            "mister-servicios",
+            "brain-folio"
         ],
         "technologies": [
             "SCSS",
@@ -136,7 +139,8 @@
         "projectIds": [
             "mister-servicios",
             "angular-poc",
-            "nice-benevoles"
+            "nice-benevoles",
+            "viral-maker"
         ],
         "technologies": [
             "Node.js",

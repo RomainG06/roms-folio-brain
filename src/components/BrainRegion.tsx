@@ -10,11 +10,11 @@ export interface RegionPosition {
 }
 
 export const REGION_POSITIONS_3D: RegionPosition[] = [
-    // ── Hémisphère gauche (LOGIC) ──────────────────
+    // ── Left hemisphere (LOGIC) ──────────────────
     { id: 'android-mobile', position: [1, 1, 0.8] },
     { id: 'backend-api', position: [-0.8, 1.5, 0.2] },
     { id: 'devops-archi', position: [-1.2, 0.4, 0.8] },
-    // ── Hémisphère droit (CREATIVE) ────────────────
+    // ── Right hemisphere (CREATIVE) ────────────────
     { id: 'flutter', position: [-1, 0.5, -1.3] },
     { id: 'react-web', position: [1.6, -0.2, -1.2] },
     { id: 'angular', position: [1.2, 1.2, -0.5] },
@@ -22,7 +22,7 @@ export const REGION_POSITIONS_3D: RegionPosition[] = [
     { id: 'video-games', position: [0.8, -0.5, -1.5] },
 ]
 
-// Connexions entre régions (paires id-id)
+// Connections between regions (id-id pairs)
 export const BASE_CONNECTIONS: Array<[string, string]> = [
     ['backend-api', 'devops-archi'],
     ['devops-archi', 'android-mobile'],
@@ -31,14 +31,14 @@ export const BASE_CONNECTIONS: Array<[string, string]> = [
     ['react-web', 'angular'],
     ['react-web', 'creative-uiux'],
     ['flutter', 'creative-uiux'],
-    // Pont gauche ↔ droit
+    // Left ↔ right bridge
     ['devops-archi', 'flutter'],
     ['backend-api', 'angular'],
     ['video-games', 'creative-uiux'],
     ['video-games', 'backend-api'],
 ]
 
-// Centre 3D d'une région (utilisé par NeuralConnection)
+// 3D center of a region (used by NeuralConnection)
 export function getRegionCenter(id: string): { x: number; y: number; z: number } {
     const r = REGION_POSITIONS_3D.find(p => p.id === id)
     return r ? { x: r.position[0], y: r.position[1], z: r.position[2] } : { x: 0, y: 0, z: 0 }
@@ -82,10 +82,10 @@ export function BrainRegionPoint({
         if (!isActive && !isHovered) {
             const t = state.clock.elapsedTime
 
-            // Pulsation idle sur le halo
+            // Idle pulsation on the halo
             glowRef.current.scale.setScalar(1 + Math.sin(t * 2) * 0.15)
 
-            // Blink organique unifié : deux sinus à fréquences incommensurables
+            // Unified organic blink: two sinusoids with incommensurable frequencies
             const blink = 0.5 + 0.5 * (Math.sin(t * 1.3) * Math.sin(t * 0.7))
 
             if (coreMatRef.current)
@@ -119,7 +119,7 @@ export function BrainRegionPoint({
                 />
             </mesh>
 
-            {/* Sphère principale interactive */}
+            {/* Main interactive sphere */}
             <mesh
                 ref={coreRef}
                 onPointerOver={(e) => { e.stopPropagation(); onHover(region.id) }}
@@ -135,7 +135,7 @@ export function BrainRegionPoint({
                 />
             </mesh>
 
-            {/* Lumière locale sur le cerveau */}
+            {/* Light on brain */}
             <pointLight
                 ref={lightRef}
                 color={region.color}
@@ -144,8 +144,8 @@ export function BrainRegionPoint({
                 decay={2}
             />
 
-            {/* Label HTML projeté en screen-space */}
-            <Html position={[0, 0.24, 0]} center style={{ pointerEvents: 'none' }}>
+            {/* Label HTML projected in screen-space */}
+            <Html position={[0, 0.24, 0]} center zIndexRange={[15, 0]} style={{ pointerEvents: 'none' }}>
                 <span
                     ref={labelRef}
                     style={{

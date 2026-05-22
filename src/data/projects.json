@@ -5,6 +5,7 @@
         "description": "Application multiplateforme de signalement pour professionnels. Multilingue (FR/EN/NL), Google Maps avec marqueurs personnalisés, déploiement stores Apple & Android.",
         "year": "2024 – 2025",
         "company": "Ubiplace",
+        "status": "completed",
         "regionIds": [
             "flutter",
             "devops-archi"
@@ -16,6 +17,12 @@
             "CI/CD",
             "GitFlow"
         ],
+        "highlights": [
+            "Application multiplateforme déployée sur App Store & Google Play",
+            "Support multilingue FR/EN/NL intégré nativement",
+            "Intégration Google Maps avec marqueurs personnalisés",
+            "Pipeline CI/CD et workflow GitFlow en environnement professionnel"
+        ],
         "links": {}
     },
     {
@@ -24,6 +31,7 @@
         "description": "Application Android de suivi de chantiers. Intégration Retrofit pour API HTTP, amélioration accessibilité (lecture d'écran, résumé vocal), déploiement Google Play.",
         "year": "2024 – 2025",
         "company": "Ubiplace",
+        "status": "completed",
         "regionIds": [
             "android-mobile",
             "devops-archi"
@@ -35,6 +43,12 @@
             "Android Studio",
             "Gemini"
         ],
+        "highlights": [
+            "Intégration Retrofit pour communication API HTTP REST",
+            "Amélioration de l'accessibilité : TalkBack & résumés vocaux",
+            "Déploiement et gestion des versions Google Play",
+            "Assistance au développement via Gemini (IA)"
+        ],
         "links": {}
     },
     {
@@ -43,6 +57,7 @@
         "description": "Application Flutter pour les bénévoles des événements de Nice. Riverpod, Google Maps, liste dynamique des missions, LiveChat temps réel via WebSockets.",
         "year": "2022 – 2023",
         "company": "Métropole Nice Côte d'Azur",
+        "status": "completed",
         "regionIds": [
             "flutter",
             "backend-api"
@@ -54,6 +69,12 @@
             "Google Maps API",
             "WebSocket"
         ],
+        "highlights": [
+            "State management avec Riverpod (architecture réactive)",
+            "LiveChat temps réel via WebSockets",
+            "Carte interactive Google Maps des missions bénévoles",
+            "Application déployée pour les événements officiels de Nice Métropole"
+        ],
         "links": {}
     },
     {
@@ -62,6 +83,7 @@
         "description": "Refonte complète de l'app du Musée de Préhistoire de Nice. Ionic → Flutter, backoffice Directus CMS, publication iOS & Android.",
         "year": "2022 – 2023",
         "company": "Métropole Nice Côte d'Azur",
+        "status": "completed",
         "regionIds": [
             "flutter",
             "angular"
@@ -72,6 +94,12 @@
             "GetX",
             "Directus CMS",
             "PHP"
+        ],
+        "highlights": [
+            "Migration complète Ionic → Flutter (refonte from scratch)",
+            "Backoffice headless avec Directus CMS",
+            "Architecture GetX pour navigation et état global",
+            "Publication officielle iOS & Android pour une institution publique"
         ],
         "links": {
             "android": "https://play.google.com/store/apps/details?id=org.nicecotedazur.terraamata",
@@ -84,6 +112,7 @@
         "description": "Application Android de carte virtuelle pour accéder aux espaces culturels de Nice. Navigation NavHost, Google Maps, ViewModel.",
         "year": "2021",
         "company": "Métropole Nice Côte d'Azur",
+        "status": "completed",
         "regionIds": [
             "android-mobile"
         ],
@@ -94,6 +123,12 @@
             "Google Maps API",
             "ViewModel"
         ],
+        "highlights": [
+            "Navigation multi-écrans avec NavHost (Jetpack)",
+            "Architecture MVVM avec ViewModel",
+            "Carte interactive Google Maps des espaces culturels",
+            "Carte virtuelle d'accès aux lieux culturels niçois"
+        ],
         "links": {}
     },
     {
@@ -102,6 +137,7 @@
         "description": "POC dashboard Angular pour changement de techno backoffice. Login utilisateur, tableau de notifications temps réel depuis serveur Node.js, PgAdmin.",
         "year": "2021",
         "company": "Métropole Nice Côte d'Azur",
+        "status": "poc",
         "regionIds": [
             "angular",
             "backend-api"
@@ -113,6 +149,12 @@
             "HTTP GET",
             "PgAdmin"
         ],
+        "highlights": [
+            "POC pour valider la migration technologique du backoffice",
+            "Authentification utilisateur en Angular",
+            "Tableau de notifications temps réel depuis un serveur Node.js",
+            "Connexion et consultation de base de données via PgAdmin"
+        ],
         "links": {}
     },
     {
@@ -121,6 +163,7 @@
         "description": "Jeu d'arène multijoueur sur Roblox Studio (PC & Mobile, 4-8 joueurs). Machine à états complète (Attente→Intermission→En jeu→Fin de round), 10 armes avec raycasts serveur, 2 transformations débloquables (Icare, DemonForm), progression persistante DataStore, anti-cheat position, 16 services serveur modulaires, 30 RemoteEvents, interface tactile mobile dédiée.",
         "year": "2026",
         "company": "Projet Personnel",
+        "status": "completed",
         "regionIds": [
             "video-games",
             "creative-uiux"
@@ -134,7 +177,16 @@
             "GamePass API",
             "Mobile Combat UI"
         ],
-        "links": {}
+        "highlights": [
+            "Machine à états serveur complète : Attente → Intermission → En jeu → Fin de round",
+            "10 armes avec raycasts côté serveur + système anti-cheat position",
+            "2 transformations débloquables (Icare, DemonForm) avec logique GamePass",
+            "Progression persistante via DataStore (XP, items, déblocages)",
+            "16 services modulaires, 30 RemoteEvents & interface tactile mobile dédiée"
+        ],
+        "links": {
+            "live": "https://www.roblox.com/fr/games/92754456794150/Ultimate-Weapon-Arena"
+        }
     },
     {
         "id": "site-dj",
@@ -142,6 +194,7 @@
         "description": "Site vitrine professionnel pour un DJ. React + Vite, intégration plateformes musicales (Spotify, YouTube, Beatport, SoundCloud), SEO, déploiement GitHub Pages.",
         "year": "2026",
         "company": "Projet Personnel",
+        "status": "completed",
         "regionIds": [
             "react-web",
             "creative-uiux"
@@ -154,8 +207,14 @@
             "SEO",
             "GitHub Pages"
         ],
+        "highlights": [
+            "Intégration multi-plateformes : Spotify, YouTube, Beatport, SoundCloud",
+            "Optimisation SEO on-page (balises, structure, performances)",
+            "Déploiement continu via GitHub Pages",
+            "Site professionnel en production à destination d'un client réel"
+        ],
         "links": {
-            "live": "https://diazmantes.fr"
+            "live": "https://www.diazmantes.fr/"
         }
     },
     {
@@ -164,6 +223,7 @@
         "description": "Plateforme de mise en relation de services au Mexique (type Allo Voisin). Messagerie, notation, paiement en ligne, multilingue WPML, profils clients/prestataires.",
         "year": "2025 – 2026",
         "company": "Projet Personnel",
+        "status": "completed",
         "regionIds": [
             "backend-api",
             "creative-uiux"
@@ -176,8 +236,72 @@
             "phpMyAdmin",
             "HTML/CSS"
         ],
+        "highlights": [
+            "Plateforme de mise en relation clients / prestataires (type marketplace)",
+            "Messagerie intégrée entre utilisateurs et système de notation",
+            "Paiement en ligne sécurisé",
+            "Support multilingue via WPML (ES/FR)"
+        ],
         "links": {
             "live": "https://mister-servicios.com"
         }
+    },
+    {
+        "id": "viral-maker",
+        "title": "Viral Maker",
+        "description": "Mini SaaS de génération de contenu marketing assisté par IA, en cours de développement. Stack Angular / FastAPI avec intégrations OpenAI (génération de captions), Supabase (gestion des crédits) et Stripe (monétisation). Démontre la structuration d'une application full-stack orientée produit : API métier, logique de crédits et séparation front/back.",
+        "year": "2026",
+        "company": "Projet Personnel",
+        "status": "in-progress",
+        "regionIds": [
+            "angular",
+            "backend-api"
+        ],
+        "technologies": [
+            "Angular",
+            "TypeScript",
+            "FastAPI",
+            "Python",
+            "OpenAI API",
+            "Supabase",
+            "Stripe"
+        ],
+        "highlights": [
+            "Architecture full-stack découplée Angular (front) / FastAPI (back)",
+            "Génération de captions marketing via OpenAI API",
+            "Gestion des crédits utilisateur avec Supabase (BDD + Auth)",
+            "Intégration Stripe pour la monétisation (paiements & abonnements)"
+        ],
+        "links": {
+            "github": "https://github.com/RomainG06/Viral-Maker"
+        }
+    },
+    {
+        "id": "brain-folio",
+        "title": "Brain Folio",
+        "description": "Portfolio interactif basé sur un cerveau 3D où chaque région représente un domaine technique. Cliquer sur une zone du cerveau ouvre un panel de projets associés. Stack React / Three.js / Framer Motion, entièrement conçu et codé from scratch.",
+        "year": "2026",
+        "company": "Projet Personnel",
+        "status": "in-progress",
+        "regionIds": [
+            "react-web",
+            "creative-uiux"
+        ],
+        "technologies": [
+            "React",
+            "TypeScript",
+            "Three.js",
+            "React Three Fiber",
+            "Framer Motion",
+            "Vite",
+            "CSS Modules"
+        ],
+        "highlights": [
+            "Cerveau 3D interactif chargé et rendu avec Three.js & React Three Fiber",
+            "Navigation thématique par régions cérébrales (chaque zone = un domaine tech)",
+            "Animations et transitions fluides avec Framer Motion",
+            "Architecture modulaire en composants React + CSS Modules"
+        ],
+        "links": {}
     }
 ]

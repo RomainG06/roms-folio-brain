@@ -56,16 +56,16 @@ export default function BrainScene({
                 gl={{ alpha: true, antialias: true }}
                 className={styles.canvas}
             >
-                {/* Éclairage ambiant + directionnel */}
+                {/* Ambient + directional lighting */}
                 <ambientLight intensity={0.25} />
                 <pointLight position={[4, 6, 4]} intensity={1.5} color="#ffffff" />
                 <pointLight position={[-4, -2, -4]} intensity={0.6} color="#0040ff" />
 
                 <Suspense fallback={null}>
-                    {/* Cerveau 3D */}
+                    {/* Brain 3D */}
                     <BrainModel />
 
-                    {/* Connexions neuronales */}
+                    {/* Neural connections */}
                     {BASE_CONNECTIONS.map(([a, b], i) => {
                         const key = [a, b].sort().join('|')
                         const isActive = activeConnSet.has(key)
@@ -81,7 +81,7 @@ export default function BrainScene({
                         )
                     })}
 
-                    {/* Points de régions interactifs */}
+                    {/* Interactive region points */}
                     {REGION_POSITIONS_3D.map((rp) => {
                         const region = regions.find(r => r.id === rp.id)
                         if (!region) return null

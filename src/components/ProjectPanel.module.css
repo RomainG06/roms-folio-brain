@@ -134,6 +134,36 @@
     letter-spacing: 0.04em;
 }
 
+.statusBadge {
+    font-size: 0.58rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 20px;
+    border: 1px solid;
+    line-height: 1.4;
+    flex-shrink: 0;
+}
+
+.status_completed {
+    color: #4ade80;
+    border-color: #4ade8044;
+    background: #4ade8012;
+}
+
+.status_in-progress {
+    color: #fb923c;
+    border-color: #fb923c44;
+    background: #fb923c12;
+}
+
+.status_poc {
+    color: #a78bfa;
+    border-color: #a78bfa44;
+    background: #a78bfa12;
+}
+
 .projectTitle {
     font-size: 0.9rem;
     font-weight: 600;
@@ -301,8 +331,36 @@
     font-size: 0.875rem;
     color: rgba(255, 255, 255, 0.58);
     line-height: 1.78;
-    margin-bottom: 1.75rem;
-    flex: 1;
+    margin-bottom: 1rem;
+}
+
+.highlightsList {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+}
+
+.highlightsItem {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.72);
+    line-height: 1.5;
+    padding-left: 1.1rem;
+    position: relative;
+}
+
+.highlightsItem::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent, #00d4ff);
+    box-shadow: 0 0 6px var(--accent, #00d4ff);
 }
 
 .modalLinks {
