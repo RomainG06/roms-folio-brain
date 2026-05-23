@@ -5,19 +5,19 @@ import * as THREE from 'three'
 // Matériaux partagés (créés une fois, réutilisés)
 const baseMat = new THREE.MeshStandardMaterial({
     color: '#b61ca1',
-    emissive: '#060e1f',
-    emissiveIntensity: 0.4,
+    emissive: '#1a0540',
+    emissiveIntensity: 0.8,
     transparent: true,
-    opacity: 0.60,
+    opacity: 0.65,
     depthWrite: false,
     side: THREE.FrontSide,
 })
 
 const wireMat = new THREE.MeshBasicMaterial({
-    color: '#1a3a6e',
+    color: '#2a4a8e',
     wireframe: true,
     transparent: true,
-    opacity: 0.12,
+    opacity: 0.18,
 })
 
 export function BrainModel() {

@@ -17,7 +17,7 @@ function ExternalIcon() {
     )
 }
 
-// ── Modal détail projet ──────────────────────────────────────────────────────
+// ── Modal detail project ──────────────────────────────────────────────────────
 function ProjectModal({ project, region, onClose }: {
     project: Project | null
     region: BrainRegion | null
@@ -35,7 +35,7 @@ function ProjectModal({ project, region, onClose }: {
         <AnimatePresence>
             {project && (
                 <>
-                    {/* Backdrop flouté */}
+                    {/* blurred backdrop */}
                     <motion.div
                         className={styles.modalBackdrop}
                         initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
@@ -43,7 +43,7 @@ function ProjectModal({ project, region, onClose }: {
                         onClick={onClose}
                     />
 
-                    {/* Overlay centrant (non interactif) */}
+                    {/* Centered overlay (non-interactive) */}
                     <div className={styles.modalOverlay}>
                         <motion.div
                             className={styles.modal}
@@ -53,21 +53,21 @@ function ProjectModal({ project, region, onClose }: {
                             exit={{ opacity: 0, scale: 0.94, y: 20 }}
                             transition={{ type: 'spring', damping: 26, stiffness: 300 }}
                         >
-                            {/* Barre accent couleur région */}
+                            {/* Accent bar */}
                             <div
                                 className={styles.modalAccentBar}
                                 style={{ background: `linear-gradient(90deg, ${color}, ${color}55 60%, transparent)` }}
                             />
 
-                            {/* Fermer */}
-                            <button className={styles.modalCloseBtn} onClick={onClose} aria-label="Fermer">
+                            {/* Close */}
+                            <button className={styles.modalCloseBtn} onClick={onClose} aria-label="Close">
                                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
                                     <path d="M2 2l12 12M14 2L2 14" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
                                 </svg>
                             </button>
 
                             <div className={styles.modalBody}>
-                                {/* ── Colonne gauche ── */}
+                                {/* ── Left column ── */}
                                 <div className={styles.modalLeft}>
                                     <div className={styles.modalMetaRow}>
                                         <span className={styles.modalCompany} style={{ color }}>{project.company}</span>
@@ -125,7 +125,7 @@ function ProjectModal({ project, region, onClose }: {
                                     )}
                                 </div>
 
-                                {/* ── Colonne droite ── */}
+                                {/* ── Right column ── */}
                                 <div className={styles.modalRight}>
                                     {region && (
                                         <div className={styles.modalRegionTag}>
@@ -217,7 +217,7 @@ export default function ProjectPanel({ region, projects, onClose }: ProjectPanel
                                 ))}
                             </div>
 
-                            {/* Projets */}
+                            {/* Projects */}
                             <div className={styles.projects}>
                                 <p className={styles.sectionLabel}>
                                     {projects.length} projet{projects.length > 1 ? 's' : ''}

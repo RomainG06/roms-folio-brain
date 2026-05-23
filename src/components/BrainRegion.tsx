@@ -50,6 +50,7 @@ interface BrainRegionPointProps {
     isHovered: boolean
     isActive: boolean
     isLit: boolean
+    isMobile?: boolean
     onHover: (id: string | null) => void
     onActivate: (id: string) => void
 }
@@ -60,9 +61,12 @@ export function BrainRegionPoint({
     isHovered,
     isActive,
     isLit,
+    isMobile = false,
     onHover,
     onActivate,
 }: BrainRegionPointProps) {
+    const coreRadius = isMobile ? 0.12 : 0.09
+    const haloRadius = isMobile ? 0.22 : 0.17
     const coreRef = useRef<THREE.Mesh>(null)
     const glowRef = useRef<THREE.Mesh>(null)
     const coreMatRef = useRef<THREE.MeshBasicMaterial>(null)
@@ -89,13 +93,17 @@ export function BrainRegionPoint({
             const blink = 0.5 + 0.5 * (Math.sin(t * 1.3) * Math.sin(t * 0.7))
 
             if (coreMatRef.current)
-                coreMatRef.current.opacity = THREE.MathUtils.lerp(0.1, isLit ? 0.65 : 0.38, blink)
+                coreMatRef.current.opacity = THREE.MathUtils.lerp(
+                    isMobile ? 0.5 : 0.38,
+                    isLit ? 0.9 : (isMobile ? 0.85 : 0.7),
+                    blink
+                )
             if (glowMatRef.current)
-                glowMatRef.current.opacity = THREE.MathUtils.lerp(0.02, 0.2, blink)
+                glowMatRef.current.opacity = THREE.MathUtils.lerp(0.07, isMobile ? 0.32 : 0.22, blink)
             if (lightRef.current)
-                lightRef.current.intensity = THREE.MathUtils.lerp(0.1, isLit ? 1.5 : 0.8, blink)
+                lightRef.current.intensity = THREE.MathUtils.lerp(0.35, isLit ? 1.5 : 0.9, blink)
             if (labelRef.current)
-                labelRef.current.style.opacity = String(THREE.MathUtils.lerp(0.15, 0.85, blink))
+                labelRef.current.style.opacity = String(THREE.MathUtils.lerp(isMobile ? 0.45 : 0.5, 1, blink))
         } else {
             glowRef.current.scale.setScalar(1)
             if (labelRef.current)
@@ -108,13 +116,14 @@ export function BrainRegionPoint({
     return (
         <group position={position}>
             {/* Halo glow */}
-            <mesh ref={glowRef}>
-                <sphereGeometry args={[0.15, 16, 16]} />
+            <mesh ref={glowRef} renderOrder={3}>
+                <sphereGeometry args={[haloRadius, 16, 16]} />
                 <meshBasicMaterial
                     ref={glowMatRef}
                     color={region.color}
                     transparent
-                    opacity={isActive ? 0.2 : isHovered ? 0.13 : 0.04}
+                    depthTest={false}
+                    opacity={isActive ? 0.25 : isHovered ? 0.16 : isMobile ? 0.12 : 0.04}
                     depthWrite={false}
                 />
             </mesh>
@@ -122,16 +131,18 @@ export function BrainRegionPoint({
             {/* Main interactive sphere */}
             <mesh
                 ref={coreRef}
+                renderOrder={3}
                 onPointerOver={(e) => { e.stopPropagation(); onHover(region.id) }}
                 onPointerOut={() => onHover(null)}
                 onClick={(e) => { e.stopPropagation(); onActivate(region.id) }}
             >
-                <sphereGeometry args={[0.07, 20, 20]} />
+                <sphereGeometry args={[coreRadius, 20, 20]} />
                 <meshBasicMaterial
                     ref={coreMatRef}
                     color={region.color}
                     transparent
-                    opacity={isActive ? 1 : isHovered ? 0.9 : isLit ? 0.65 : 0.35}
+                    depthTest={false}
+                    opacity={isActive ? 1 : isHovered ? 0.9 : isLit ? 0.75 : (isMobile ? 0.65 : 0.35)}
                 />
             </mesh>
 
@@ -150,14 +161,14 @@ export function BrainRegionPoint({
                     ref={labelRef}
                     style={{
                         color: region.color,
-                        fontSize: '9px',
+                        fontSize: isMobile ? '11px' : '9px',
                         fontFamily: 'Space Grotesk, sans-serif',
                         letterSpacing: '1.5px',
                         textTransform: 'uppercase',
-                        opacity: isActive ? 1 : isHovered ? 0.9 : 0.4,
+                        opacity: isActive ? 1 : isHovered ? 0.9 : isMobile ? 0.6 : 0.4,
                         whiteSpace: 'nowrap',
                         userSelect: 'none',
-                        textShadow: `0 0 6px ${region.color}80`,
+                        textShadow: `0 0 8px ${region.color}cc`,
                     }}
                 >
                     {region.title}

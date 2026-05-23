@@ -7,11 +7,14 @@ import ProjectPanel from './ProjectPanel'
 import ContactBar from './ContactBar'
 import TopNav from './TopNav'
 import ParticleBackground from './ParticleBackground'
+import RegionChipBar from './RegionChipBar'
 import { useBrainInteraction } from '../hooks/useBrainInteraction'
+import { useIsMobile } from '../hooks/useIsMobile'
 import styles from './AppShell.module.css'
 
 export default function AppShell() {
     const [showIntro, setShowIntro] = useState(true)
+    const isMobile = useIsMobile()
     const {
         regions,
         hoveredId,
@@ -58,6 +61,15 @@ export default function AppShell() {
                             projects={activeProjects}
                             onClose={clear}
                         />
+                        {isMobile && (
+                            <RegionChipBar
+                                regions={regions}
+                                hoveredId={hoveredId}
+                                activeId={activeId}
+                                onHover={setHoveredId}
+                                onActivate={activate}
+                            />
+                        )}
                         <ContactBar />
                     </div>
                 )}

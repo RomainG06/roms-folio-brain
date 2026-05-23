@@ -56,12 +56,14 @@ export default function NeuralConnection({
                 dashed={!active}
                 dashSize={0.08}
                 gapSize={0.15}
+                renderOrder={3}
+                depthTest={false}
             />
             {/* Sphère voyageant le long de la connexion active */}
             {active && (
-                <mesh ref={pulseRef}>
+                <mesh ref={pulseRef} renderOrder={3}>
                     <sphereGeometry args={[0.028, 8, 8]} />
-                    <meshBasicMaterial color={color} transparent opacity={0.9} />
+                    <meshBasicMaterial color={color} transparent depthTest={false} opacity={0.9} />
                 </mesh>
             )}
         </group>
