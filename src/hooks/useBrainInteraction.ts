@@ -16,21 +16,27 @@ export function useBrainInteraction() {
         ? projects.filter(p => activeRegion.projectIds.includes(p.id))
         : []
 
-    // IDs de toutes les régions illuminées quand une région est active
-    // (la région active + toutes celles connectées via les projets multi-régions)
+    // IDs of regions to "light up" (active region + all connected via multi-region projects)
+    // (active hoveredId is handled separately in BrainScene for instant feedback on hover)
     const litRegionIds: Set<string> = new Set()
     if (activeId) {
         litRegionIds.add(activeId)
         activeProjects.forEach(p => p.regionIds.forEach(rid => litRegionIds.add(rid)))
     }
 
-    // Paires de connexions à afficher (connexions directes de la région active)
+    // Pairs of region IDs to show connections between (for active region: direct connections + multi-region projects)
+    // Direct connections are shown on hover (or scroll chip on mobile)
+    // Multi-region project connections are reserved for click (activeId)
+    const displayRegionId = activeId ?? hoveredId
+    const displayRegion = displayRegionId ? regions.find(r => r.id === displayRegionId) ?? null : null
     const activeConnections: Array<[string, string]> = []
-    if (activeRegion) {
-        activeRegion.connections.forEach(targetId => {
-            activeConnections.push([activeRegion.id, targetId])
+    if (displayRegion) {
+        displayRegion.connections.forEach(targetId => {
+            activeConnections.push([displayRegion.id, targetId])
         })
-        // Connexions via projets multi-régions
+    }
+    if (activeRegion) {
+        // Connections via multi-region projects
         activeProjects.forEach(p => {
             if (p.regionIds.length > 1) {
                 for (let i = 0; i < p.regionIds.length - 1; i++) {
