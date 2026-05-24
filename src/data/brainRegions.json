@@ -39,7 +39,8 @@
         ],
         "projectIds": [
             "site-dj",
-            "brain-folio"
+            "brain-folio",
+            "muay-thai-sud"
         ],
         "technologies": [
             "React",
@@ -140,7 +141,8 @@
             "mister-servicios",
             "angular-poc",
             "nice-benevoles",
-            "viral-maker"
+            "viral-maker",
+            "muay-thai-sud"
         ],
         "technologies": [
             "Node.js",
