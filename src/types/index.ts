@@ -14,12 +14,14 @@ export interface Project {
   id: string
   title: string
   description: string
+  descriptionByRegion?: Record<string, string>
   year: string
   company: string
   regionIds: string[]
   technologies: string[]
   status?: 'completed' | 'in-progress' | 'poc'
   highlights?: string[]
+  highlightsByRegion?: Record<string, string[]>
   links: {
     live?: string
     android?: string

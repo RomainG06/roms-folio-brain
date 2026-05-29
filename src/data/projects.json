@@ -3,6 +3,10 @@
         "id": "smart-vigie",
         "title": "Smart Vigie",
         "description": "Application multiplateforme de signalement pour professionnels. Multilingue (FR/EN/NL), Google Maps avec marqueurs personnalisés, déploiement stores Apple & Android.",
+        "descriptionByRegion": {
+            "flutter": "App Flutter multiplateforme de signalement terrain. Interface multilingue (FR/EN/NL), carte Google Maps avec marqueurs personnalisés, notifications push et UX optimisée iOS & Android.",
+            "devops-archi": "Mise en production d'une app professionnelle sur App Store & Google Play. Pipeline CI/CD, workflow GitFlow, gestion des environnements et releases en équipe chez Ubiplace."
+        },
         "year": "2024 – 2025",
         "company": "Ubiplace",
         "status": "completed",
@@ -23,12 +27,56 @@
             "Intégration Google Maps avec marqueurs personnalisés",
             "Pipeline CI/CD et workflow GitFlow en environnement professionnel"
         ],
+        "highlightsByRegion": {
+            "flutter": [
+                "UI Flutter multiplateforme : iOS et Android depuis un seul codebase",
+                "Support multilingue FR/EN/NL intégré nativement avec localisation Dart",
+                "Carte Google Maps interactive avec marqueurs personnalisés par signalement",
+                "Notifications push et gestion des états applicatifs complexes"
+            ],
+            "devops-archi": [
+                "Pipeline CI/CD complet : build, tests et déploiement automatisé",
+                "Workflow GitFlow structuré en environnement professionnel Ubiplace",
+                "Publication et gestion des releases sur App Store & Google Play",
+                "Coordination multi-environnements (dev / staging / prod)"
+            ]
+        },
+        "links": {}
+    },
+    {
+        "id": "backoffice-vigie",
+        "title": "Backoffice Smart Vigie",
+        "description": "Backoffice Angular de gestion des données de l'application Smart Vigie (Ubiplace). Amélioration de l'existant : module de gestion de projet, chat enrichi avec tags et notifications, chaînes de traduction EN/NL, refonte du design responsive et correctifs.",
+        "year": "2025",
+        "company": "Ubiplace",
+        "status": "completed",
+        "regionIds": [
+            "angular"
+        ],
+        "technologies": [
+            "Angular",
+            "TypeScript",
+            "SCSS",
+            "RxJS",
+            "Bootstrap"
+        ],
+        "highlights": [
+            "Intégration de la gestion de projet dans la solution existante",
+            "Amélioration du chat : tagging utilisateurs et envoi de notifications ciblées",
+            "Chaînes de traductions EN et NL ajoutées nativement",
+            "Refonte du design et amélioration du responsive sur l'ensemble du backoffice",
+            "Corrections de bugs et maintenance de l'existant"
+        ],
         "links": {}
     },
     {
         "id": "smart-chantier",
         "title": "Smart Chantier",
         "description": "Application Android de suivi de chantiers. Intégration Retrofit pour API HTTP, amélioration accessibilité (lecture d'écran, résumé vocal), déploiement Google Play.",
+        "descriptionByRegion": {
+            "android-mobile": "Application Kotlin native de suivi de chantiers. Intégration Retrofit pour les appels API HTTP REST, architecture MVVM, et amélioration poussée de l'accessibilité (TalkBack, résumés vocaux Gemini).",
+            "devops-archi": "Gestion du cycle de vie complet d'une app Android professionnelle chez Ubiplace : versionning, releases Google Play, processus qualité et déploiement en production."
+        },
         "year": "2024 – 2025",
         "company": "Ubiplace",
         "status": "completed",
@@ -49,12 +97,30 @@
             "Déploiement et gestion des versions Google Play",
             "Assistance au développement via Gemini (IA)"
         ],
+        "highlightsByRegion": {
+            "android-mobile": [
+                "Architecture Kotlin native avec séparation des responsabilités (MVVM)",
+                "Intégration Retrofit pour communication API HTTP REST",
+                "Accessibilité avancée : TalkBack, résumés vocaux assistés par Gemini",
+                "Interactions Android Studio avec assistant IA Gemini intégré"
+            ],
+            "devops-archi": [
+                "Gestion des versions et releases sur Google Play Store",
+                "Processus de déploiement et suivi qualité en environnement professionnel",
+                "Coordination avec l'équipe Ubiplace sur le cycle de mise à jour",
+                "Tests de régression et validation avant chaque release"
+            ]
+        },
         "links": {}
     },
     {
         "id": "nice-benevoles",
         "title": "Nice Métropole Bénévoles",
         "description": "Application Flutter pour les bénévoles des événements de Nice. Riverpod, Google Maps, liste dynamique des missions, LiveChat temps réel via WebSockets.",
+        "descriptionByRegion": {
+            "flutter": "App Flutter dédiée aux bénévoles des événements Nice Métropole. State management Riverpod, carte Google Maps des missions, liste dynamique et navigation fluide iOS & Android.",
+            "backend-api": "Couche serveur de l'app bénévoles : LiveChat temps réel via WebSockets, API REST de récupération des missions, synchronisation des données événementielles en direct."
+        },
         "year": "2022 – 2023",
         "company": "Métropole Nice Côte d'Azur",
         "status": "completed",
@@ -75,12 +141,31 @@
             "Carte interactive Google Maps des missions bénévoles",
             "Application déployée pour les événements officiels de Nice Métropole"
         ],
+        "highlightsByRegion": {
+            "flutter": [
+                "Architecture réactive avec Riverpod (providers, state management)",
+                "Carte Google Maps interactive des missions bénévoles géolocalisées",
+                "Liste dynamique des missions avec filtres et état temps réel",
+                "App déployée en production pour les événements officiels de Nice Métropole",
+                "Développement de LiveChat intégré à l'app pour la communication temps réel entre bénévoles et coordinateurs"
+            ],
+            "backend-api": [
+                "LiveChat bénévoles ↔ coordinateurs via WebSockets temps réel",
+                "API REST de récupération et synchronisation des missions événementielles",
+                "Gestion des états de mission (disponible, en cours, terminée) côté serveur",
+                "Infrastructure backend déployée pour les événements officiels de la Métropole"
+            ]
+        },
         "links": {}
     },
     {
         "id": "terra-amata",
         "title": "Terra Amata",
         "description": "Refonte complète de l'app du Musée de Préhistoire de Nice. Ionic → Flutter, backoffice Directus CMS, publication iOS & Android.",
+        "descriptionByRegion": {
+            "flutter": "Refonte from scratch de l'app officielle du Musée de Préhistoire de Nice. Migration Ionic → Flutter, navigation GetX, publication iOS & Android pour une institution publique de la Métropole.",
+            "angular": "Backoffice headless Directus CMS pour la gestion du contenu éditorial du musée Terra Amata. Interface d'administration permettant aux équipes de mettre à jour expositions et fiches sans redéploiement."
+        },
         "year": "2022 – 2023",
         "company": "Métropole Nice Côte d'Azur",
         "status": "completed",
@@ -101,6 +186,20 @@
             "Architecture GetX pour navigation et état global",
             "Publication officielle iOS & Android pour une institution publique"
         ],
+        "highlightsByRegion": {
+            "flutter": [
+                "Migration complète Ionic → Flutter (refonte from scratch)",
+                "Architecture GetX pour navigation multi-écrans et état global",
+                "UI adaptée au contenu muséal : galeries, fiches préhistoire, audioguide",
+                "Publication officielle iOS & Android pour une institution de la Métropole"
+            ],
+            "angular": [
+                "Backoffice headless Directus CMS pour la gestion éditoriale du musée",
+                "Interface d'administration des expositions et fiches de contenu",
+                "API REST Directus consommée par l'app Flutter (découplage front/back)",
+                "Gestion des médias, textes et mises à jour sans redéploiement de l'app"
+            ]
+        },
         "links": {
             "android": "https://play.google.com/store/apps/details?id=org.nicecotedazur.terraamata",
             "ios": "https://apps.apple.com/ga/app/terra-amata/id1464514880"
@@ -132,35 +231,13 @@
         "links": {}
     },
     {
-        "id": "angular-poc",
-        "title": "Angular Proof of Concept",
-        "description": "POC dashboard Angular pour changement de techno backoffice. Login utilisateur, tableau de notifications temps réel depuis serveur Node.js, PgAdmin.",
-        "year": "2021",
-        "company": "Métropole Nice Côte d'Azur",
-        "status": "poc",
-        "regionIds": [
-            "angular",
-            "backend-api"
-        ],
-        "technologies": [
-            "Angular",
-            "TypeScript",
-            "Node.js",
-            "HTTP GET",
-            "PgAdmin"
-        ],
-        "highlights": [
-            "POC pour valider la migration technologique du backoffice",
-            "Authentification utilisateur en Angular",
-            "Tableau de notifications temps réel depuis un serveur Node.js",
-            "Connexion et consultation de base de données via PgAdmin"
-        ],
-        "links": {}
-    },
-    {
         "id": "jeu-arene",
         "title": "Jeu d'Arène Compétitif",
         "description": "Jeu d'arène multijoueur sur Roblox Studio (PC & Mobile, 4-8 joueurs). Machine à états complète (Attente→Intermission→En jeu→Fin de round), 10 armes avec raycasts serveur, 2 transformations débloquables (Icare, DemonForm), progression persistante DataStore, anti-cheat position, 16 services serveur modulaires, 30 RemoteEvents, interface tactile mobile dédiée.",
+        "descriptionByRegion": {
+            "video-games": "Architecture serveur d'un jeu d'arène Roblox multijoueur (4-8 joueurs). Machine à états complète, 10 armes avec raycasts serveur, anti-cheat position, 16 services modulaires, 30 RemoteEvents et progression persistante via DataStore.",
+            "creative-uiux": "Direction artistique et création des assets du jeu : map d'arène entièrement modélisée et texturée, modèles 3D des personnages et armes, animations de combat, musique originale et interface du Menu Principal adaptée mobile & PC."
+        },
         "year": "2026",
         "company": "Projet Personnel",
         "status": "completed",
@@ -181,9 +258,25 @@
             "Machine à états serveur complète : Attente → Intermission → En jeu → Fin de round",
             "10 armes avec raycasts côté serveur + système anti-cheat position",
             "2 transformations débloquables (Icare, DemonForm) avec logique GamePass",
-            "Progression persistante via DataStore (XP, items, déblocages)",
+            "Progression persistante via DataStore (items, déblocages)",
             "16 services modulaires, 30 RemoteEvents & interface tactile mobile dédiée"
         ],
+        "highlightsByRegion": {
+            "video-games": [
+                "Machine à états serveur complète : Attente → Intermission → En jeu → Fin de round",
+                "10 armes avec raycasts côté serveur + système anti-cheat position",
+                "2 transformations débloquables (Icare, DemonForm) avec logique GamePass API",
+                "Progression persistante via DataStore (niveaux, items déblocables)",
+                "Architecture 16 services modulaires LUAU + 30 RemoteEvents client↔serveur"
+            ],
+            "creative-uiux": [
+                "Map d'arène entièrement conçue, modélisée et texturée dans Roblox Studio",
+                "Modèles 3D des personnages, armes et effets visuels des transformations",
+                "Animations de combat (attaques, esquives, transformations Icare & DemonForm)",
+                "Musique originale et sound design de l'arène",
+                "Interface Menu Principal et HUD tactile mobile dédiée"
+            ]
+        },
         "links": {
             "live": "https://www.roblox.com/fr/games/92754456794150/Ultimate-Weapon-Arena"
         }
@@ -192,6 +285,10 @@
         "id": "site-dj",
         "title": "Site Vitrine DJ",
         "description": "Site vitrine professionnel pour un DJ. React + Vite, intégration plateformes musicales (Spotify, YouTube, Beatport, SoundCloud), SEO, déploiement GitHub Pages.",
+        "descriptionByRegion": {
+            "react-web": "Site vitrine React/Vite pour un DJ professionnel. Intégration des plateformes musicales (Spotify, YouTube, Beatport, SoundCloud), optimisation SEO on-page et déploiement continu via GitHub Pages.",
+            "creative-uiux": "Direction artistique complète d'un site vitrine DJ : identité visuelle, atmosphère sonore, typographie et mise en page immersive. Design pensé pour valoriser l'univers musical et convertir les visiteurs en clients."
+        },
         "year": "2026",
         "company": "Projet Personnel",
         "status": "completed",
@@ -213,6 +310,20 @@
             "Déploiement continu via GitHub Pages",
             "Site professionnel en production à destination d'un client réel"
         ],
+        "highlightsByRegion": {
+            "react-web": [
+                "Intégration multi-plateformes : Spotify, YouTube, Beatport, SoundCloud",
+                "Optimisation SEO on-page : balises meta, structure sémantique, performances",
+                "Déploiement continu via GitHub Pages avec pipeline automatisé",
+                "Site en production livré à un client réel DJ professionnel"
+            ],
+            "creative-uiux": [
+                "Direction artistique complète : palette, typographie et identité visuelle DJ",
+                "Design immersif et atmosphère sonore retranscrite visuellement",
+                "Mise en page orientée conversion : mix, booking, réseaux sociaux",
+                "Expérience utilisateur cohérente avec l'univers musical du DJ"
+            ]
+        },
         "links": {
             "live": "https://www.diazmantes.fr/"
         }
@@ -221,6 +332,10 @@
         "id": "mister-servicios",
         "title": "Mister Servicios",
         "description": "Plateforme de mise en relation de services au Mexique (type Allo Voisin). Messagerie, notation, paiement en ligne, multilingue WPML, profils clients/prestataires.",
+        "descriptionByRegion": {
+            "backend-api": "Backend WordPress/PHP d'une marketplace de services (Mexique). Gestion des profils clients/prestataires, messagerie intégrée, système de notation, paiement en ligne sécurisé et base de données phpMyAdmin.",
+            "creative-uiux": "Design et expérience utilisateur d'une marketplace bilingue (ES/FR). Pages profils prestataires, parcours de mise en relation, identité visuelle locale et interface Elementor optimisée pour la conversion."
+        },
         "year": "2025 – 2026",
         "company": "Projet Personnel",
         "status": "completed",
@@ -242,6 +357,20 @@
             "Paiement en ligne sécurisé",
             "Support multilingue via WPML (ES/FR)"
         ],
+        "highlightsByRegion": {
+            "backend-api": [
+                "Architecture WordPress/PHP pour une marketplace de services",
+                "Messagerie intégrée entre clients et prestataires + système de notation",
+                "Paiement en ligne sécurisé avec gestion des transactions",
+                "Base de données relationnelle gérée via phpMyAdmin"
+            ],
+            "creative-uiux": [
+                "Design Elementor des pages profils prestataires et clients",
+                "Parcours utilisateur de mise en relation pensé pour la conversion",
+                "Identité visuelle adaptée au marché local mexicain (ES/FR)",
+                "Interface responsive et accessible sur mobile et desktop"
+            ]
+        },
         "links": {
             "live": "https://mister-servicios.com"
         }
@@ -250,6 +379,10 @@
         "id": "viral-maker",
         "title": "Viral Maker",
         "description": "Mini SaaS de génération de contenu marketing assisté par IA, en cours de développement. Stack Angular / FastAPI avec intégrations OpenAI (génération de captions), Supabase (gestion des crédits) et Stripe (monétisation). Démontre la structuration d'une application full-stack orientée produit : API métier, logique de crédits et séparation front/back.",
+        "descriptionByRegion": {
+            "angular": "Front SaaS Angular/TypeScript de génération de contenu marketing IA. Interface utilisateur pour soumettre des prompts, visualiser les captions générées, consulter les crédits restants et gérer l'abonnement Stripe.",
+            "backend-api": "API FastAPI/Python au cœur du SaaS Viral Maker. Orchestration des appels OpenAI pour générer des captions, gestion des crédits et authentification via Supabase, et monétisation par abonnements Stripe."
+        },
         "year": "2026",
         "company": "Projet Personnel",
         "status": "in-progress",
@@ -272,6 +405,18 @@
             "Gestion des crédits utilisateur avec Supabase (BDD + Auth)",
             "Intégration Stripe pour la monétisation (paiements & abonnements)"
         ],
+        "highlightsByRegion": {
+            "angular": [
+                "Interface Angular TypeScript pour la génération et prévisualisation des captions",
+                "Gestion de l'état SaaS : crédits restants, historique, paramètres utilisateur",
+                "Architecture découplée Angular (front) / FastAPI (back) avec services HTTP"
+            ],
+            "backend-api": [
+                "API FastAPI/Python orchestrant les appels à OpenAI GPT pour les captions",
+                "Gestion des crédits et authentification utilisateur via Supabase (BDD + Auth)",
+                "Architecture back orientée produit : API métier, logique de crédits, sécurité"
+            ]
+        },
         "links": {
             "github": "https://github.com/RomainG06/Viral-Maker"
         }
@@ -280,6 +425,11 @@
         "id": "muay-thai-sud",
         "title": "École de Muay Thaï – Sud de la France",
         "description": "Site web responsive pour une nouvelle école de boxe thaïlandaise. Présentation du club, histoire, formules de coaching, profils des coachs et formulaire de préinscription stocké dans Supabase.",
+        "descriptionByRegion": {
+            "react-web": "Site React/TypeScript/Vite pour une école de Muay Thaï. Architecture modulaire avec CSS Modules, multi-sections (histoire, coachs, formules), validation de formulaire côté client et consommation de l'API Supabase.",
+            "backend-api": "Backend Supabase de collecte et stockage des préinscriptions. Table dédiée, validation des données côté serveur, gestion des soumissions et préparation pour la gestion des membres du club.",
+            "creative-uiux": "Direction artistique d'un site vitrine pour une école d'arts martiaux. Design immersif, palette sombre et dynamique, typographie impactante et mise en page inspirée de l'univers Muay Thaï pour capter et convertir."
+        },
         "year": "2026",
         "company": "Projet Personnel",
         "status": "in-progress",
@@ -301,15 +451,39 @@
             "Design immersif adapté à l'univers des arts martiaux",
             "Architecture React modulaire avec gestion de formulaire et validation côté client"
         ],
+        "highlightsByRegion": {
+            "react-web": [
+                "Architecture React modulaire avec CSS Modules (isolation des styles)",
+                "Multi-sections SPA : histoire du club, profils coachs, formules de coaching",
+                "Formulaire de préinscription avec validation côté client (React)",
+                "Build Vite optimisé, TypeScript strict et organisation componentielle propre"
+            ],
+            "backend-api": [
+                "Supabase comme BaaS : stockage des préinscriptions en base PostgreSQL",
+                "Validation et sanitisation des données du formulaire avant insertion",
+                "Gestion des soumissions en temps réel avec feedback utilisateur",
+                "Infrastructure préparée pour évoluer vers la gestion complète des membres"
+            ],
+            "creative-uiux": [
+                "Direction artistique Muay Thaï : palette sombre, rouge combat, typographie impactante",
+                "Design immersif multi-sections cohérent avec l'univers des arts martiaux",
+                "Mise en page orientée conversion : présentation club, appel à l'inscription",
+                "Responsive design mobile-first adapté à une clientèle sportive"
+            ]
+        },
         "links": {}
     },
     {
         "id": "brain-folio",
         "title": "Brain Folio",
         "description": "Portfolio interactif basé sur un cerveau 3D où chaque région représente un domaine technique. Cliquer sur une zone du cerveau ouvre un panel de projets associés. Stack React / Three.js / Framer Motion, entièrement conçu et codé from scratch.",
+        "descriptionByRegion": {
+            "react-web": "Portfolio React/TypeScript/Vite avec rendu 3D via React Three Fiber et Three.js. Architecture modulaire en composants, CSS Modules, gestion d'état inter-composants et performances optimisées pour le chargement du modèle 3D.",
+            "creative-uiux": "Concept et direction artistique d'un portfolio unique : cerveau 3D interactif où chaque région cérébrale représente un domaine technique. Design immersif, animations Framer Motion et expérience narrative guidant le visiteur à travers les compétences."
+        },
         "year": "2026",
         "company": "Projet Personnel",
-        "status": "in-progress",
+        "status": "completed",
         "regionIds": [
             "react-web",
             "creative-uiux"
@@ -329,6 +503,20 @@
             "Animations et transitions fluides avec Framer Motion",
             "Architecture modulaire en composants React + CSS Modules"
         ],
+        "highlightsByRegion": {
+            "react-web": [
+                "Intégration Three.js & React Three Fiber pour le rendu du cerveau 3D",
+                "Architecture React modulaire : composants, hooks custom, CSS Modules",
+                "Gestion d'état inter-composants (région active, projets, panel, tooltip)",
+                "Chargement et optimisation du modèle 3D GLTF avec Vite"
+            ],
+            "creative-uiux": [
+                "Concept original : cerveau 3D comme métaphore des domaines techniques",
+                "Direction artistique dark UI avec palette néon et effets de glow",
+                "Animations et transitions fluides avec Framer Motion (panel, tooltip, chips)",
+                "Expérience narrative interactive guidant le visiteur à travers les compétences"
+            ]
+        },
         "links": {}
     }
 ]

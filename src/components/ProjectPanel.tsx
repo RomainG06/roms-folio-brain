@@ -3,6 +3,20 @@ import { motion, AnimatePresence } from 'framer-motion'
 import type { BrainRegion, Project } from '../types'
 import styles from './ProjectPanel.module.css'
 
+function getProjectDesc(project: Project, regionId: string | undefined): string {
+    if (regionId && project.descriptionByRegion?.[regionId]) {
+        return project.descriptionByRegion[regionId]
+    }
+    return project.description
+}
+
+function getProjectHighlights(project: Project, regionId: string | undefined): string[] {
+    if (regionId && project.highlightsByRegion?.[regionId]) {
+        return project.highlightsByRegion[regionId]
+    }
+    return project.highlights ?? []
+}
+
 interface ProjectPanelProps {
     region: BrainRegion | null
     projects: Project[]
@@ -80,11 +94,11 @@ function ProjectModal({ project, region, onClose }: {
                                         )}
                                     </div>
                                     <h2 className={styles.modalTitle}>{project.title}</h2>
-                                    <p className={styles.modalDesc}>{project.description}</p>
+                                    <p className={styles.modalDesc}>{getProjectDesc(project, region?.id)}</p>
 
-                                    {project.highlights && project.highlights.length > 0 && (
+                                    {getProjectHighlights(project, region?.id).length > 0 && (
                                         <ul className={styles.highlightsList}>
-                                            {project.highlights.map((h, i) => (
+                                            {getProjectHighlights(project, region?.id).map((h, i) => (
                                                 <motion.li
                                                     key={i}
                                                     className={styles.highlightsItem}
@@ -222,7 +236,10 @@ export default function ProjectPanel({ region, projects, onClose }: ProjectPanel
                                 <p className={styles.sectionLabel}>
                                     {projects.length} projet{projects.length > 1 ? 's' : ''}
                                 </p>
-                                {projects.map((project, i) => (
+                                {[...projects].sort((a, b) => {
+                                    const endYear = (s: string) => parseInt(s.match(/\d{4}/g)?.at(-1) ?? '0')
+                                    return endYear(b.year) - endYear(a.year)
+                                }).map((project, i) => (
                                     <motion.div
                                         key={project.id}
                                         className={styles.projectCard}
@@ -243,7 +260,7 @@ export default function ProjectPanel({ region, projects, onClose }: ProjectPanel
                                             )}
                                         </div>
                                         <h3 className={styles.projectTitle}>{project.title}</h3>
-                                        <p className={styles.projectDesc}>{project.description}</p>
+                                        <p className={styles.projectDesc}>{getProjectDesc(project, region.id)}</p>
                                         <div className={styles.projectTechs}>
                                             {project.technologies.slice(0, 4).map(t => (
                                                 <span key={t} className={styles.projectTech}>{t}</span>
