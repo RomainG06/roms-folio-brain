@@ -432,7 +432,7 @@
         },
         "year": "2026",
         "company": "Projet Personnel",
-        "status": "in-progress",
+        "status": "completed",
         "regionIds": [
             "react-web",
             "backend-api",
