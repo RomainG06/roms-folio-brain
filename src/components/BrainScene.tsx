@@ -159,8 +159,6 @@ export default function BrainScene({
 
             <RegionTooltip
                 region={hoveredRegion}
-                mouseX={mouse.x}
-                mouseY={mouse.y}
             />
         </div>
     )

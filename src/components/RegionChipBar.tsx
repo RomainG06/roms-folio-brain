@@ -20,7 +20,6 @@ export default function RegionChipBar({
     const containerRef = useRef<HTMLDivElement>(null)
     const chipRefs = useRef<(HTMLDivElement | null)[]>([])
 
-    // Détecte quel chip est centré dans la barre et déclenche le hover
     const updateCenteredChip = useCallback(() => {
         const container = containerRef.current
         if (!container) return
@@ -39,9 +38,7 @@ export default function RegionChipBar({
         onHover(closest)
     }, [regions, onHover])
 
-    // Détection initiale au montage
     useEffect(() => {
-        // Petit délai pour que le layout soit prêt
         const timer = setTimeout(updateCenteredChip, 50)
         return () => clearTimeout(timer)
     }, []) // eslint-disable-line react-hooks/exhaustive-deps

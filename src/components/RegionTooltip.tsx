@@ -4,17 +4,15 @@ import styles from './RegionTooltip.module.css'
 
 interface RegionTooltipProps {
     region: BrainRegion | null
-    mouseX: number
-    mouseY: number
 }
 
-export default function RegionTooltip({ region, mouseX, mouseY }: RegionTooltipProps) {
+export default function RegionTooltip({ region }: RegionTooltipProps) {
     return (
         <AnimatePresence>
             {region && (
                 <motion.div
                     className={styles.tooltip}
-                    style={{ left: mouseX + 16, top: mouseY - 12 }}
+                    style={{ left: 16, top: 70 }}
                     initial={{ opacity: 0, scale: 0.9, y: 4 }}
                     animate={{ opacity: 1, scale: 1, y: 0 }}
                     exit={{ opacity: 0, scale: 0.9, y: 4 }}
