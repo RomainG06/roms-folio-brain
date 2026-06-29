@@ -518,5 +518,65 @@
             ]
         },
         "links": {}
+    },
+    {
+        "id": "vision-tcg",
+        "title": "Vision TCG",
+        "description": "Application web fullstack moderne permettant de détecter automatiquement les bonnes affaires de cartes Pokémon Wizards sur Leboncoin et Vinted. Scraping intelligent, scoring de rareté, estimation de prix et dashboard de chasse aux opportunités.",
+        "descriptionByRegion": {
+            "backend-api": "Backend Node.js/Express au cœur du système. Web scraping avancé avec Puppeteer & Cheerio pour Leboncoin et Vinted, gestion de captchas avec intégration navigateur, algorithme de scoring intelligent basé sur prix/rareté/condition, API REST sécurisée avec JWT, SQLite pour persistance et Jest pour tests unitaires.",
+            "react-web": "Frontend React 18 + Vite avec design system personnalisé 'Hunting Radar' dark premium. Dashboard intuitif avec stats cards, filtres avancés (score/prix/distance), carousel d'images, modal détail 707 lignes incluant breakdown de scoring et comparables. Composants modulaires, CSS avancé (grid, flexbox) et UI responsive mobile-first."
+        },
+        "year": "2026",
+        "company": "Projet Personnel",
+        "status": "completed",
+        "regionIds": [
+            "backend-api",
+            "react-web"
+        ],
+        "technologies": [
+            "Node.js",
+            "Express.js",
+            "SQLite",
+            "Puppeteer",
+            "Cheerio",
+            "JSDOM",
+            "JWT",
+            "React 18",
+            "Vite",
+            "Web Scraping",
+            "Jest"
+        ],
+        "highlights": [
+            "Scraping multi-plateforme avec gestion avancée de captchas (eBay, Vinted)",
+            "Système de scoring intelligent d'évaluation basée sur prix, rareté et condition",
+            "Dashboard intuitif avec stats, filtres et visualization des opportunités",
+            "Estimation de prix via intégration API eBay et Cardmarket",
+            "Détection automatique de l'état de la carte (Mint/NM/EX/etc.)",
+            "Profils de chasse configurables avec mots-clés intelligents",
+            "Modal détail complet avec carousel images et risk analysis",
+            "Design System 'Hunting Radar' (theme.js, accents, rarity levels)"
+        ],
+        "highlightsByRegion": {
+            "backend-api": [
+                "Web scraping avancé avec Puppeteer & Cheerio pour extraction de données précises",
+                "Gestion robuste des captchas et protection contre les blocages",
+                "Algorithme de scoring multi-critères (prix, rareté, condition, demande)",
+                "API REST sécurisée avec authentification JWT et rate limiting",
+                "Architecture modulaire avec séparation concerns et error handling robuste",
+                "Tests unitaires Jest pour fiabilité du système de scoring"
+            ],
+            "react-web": [
+                "Design System 'Hunting Radar' complet avec theme.js et variables CSS personnalisées",
+                "Dashboard avec stats cards gold glow et filtres interactifs cyan",
+                "Modal détail 707 lignes : carousel images, breakdown scoring, comparables détaillés",
+                "Build Vite optimisé (53KB gzipped), performances production",
+                "Composants réutilisables modulaires : Badge, FilterBar, LotList, Modal",
+                "Responsive design mobile-first validé sur Windows et Linux"
+            ]
+        },
+        "links": {
+            "github": "https://github.com/RomainG06/Vision-TCG"
+        }
     }
 ]
