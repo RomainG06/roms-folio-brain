@@ -61,7 +61,7 @@ export default function BrainScene({
 }: BrainSceneProps) {
     const isMobile = useIsMobile()
     const controlsRef = useRef<any>(null)
-    const [mouse, setMouse] = useState({ x: 0, y: 0 })
+    const [, setMouse] = useState({ x: 0, y: 0 })
     const hoveredRegion = hoveredId ? regions.find(r => r.id === hoveredId) ?? null : null
 
     const activeConnSet = new Set(
